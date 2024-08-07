@@ -2,6 +2,7 @@ package ec.edu.espol.polinator;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 public class SecondaryController {
 
@@ -9,4 +10,13 @@ public class SecondaryController {
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
     }
+    
+     @FXML
+    private Label textLabel;
+
+    public void setData(String textFieldValue, String comboBoxValue) {
+        textLabel.setText("Text Field: " + textFieldValue);
+        textLabel.setText("Combo Box: " + comboBoxValue);
+    }
+    
 }
