@@ -4,31 +4,28 @@ import java.io.IOException;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 
-public class PrimaryController {
+public class PrimaryController implements GameController {
+    
+    public Game game;
+
+    @Override
+    public void setGame(Game game) {
+        this.game = game;
+    }
     
     @FXML
     private TextField textFieldNumQuestions;
     @FXML
     private ComboBox<String> comboBoxTemas;
-
+   
+    
     @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
-    }
-    
-    
-     @FXML
     private void initialize() {
         // Add a key event handler to the TextField
         textFieldNumQuestions.setOnKeyPressed(this::handleKeyPress);
@@ -44,7 +41,7 @@ public class PrimaryController {
                 // Perform your logic here (e.g., validate input)
                 // For example:
                 String input = textFieldNumQuestions.getText();
-                System.out.println("Input received: " + input);
+                game.setNumQuestions(Integer.parseInt(input));
                 
                 // Switch to the secondary view
                 App.setRoot("secondary");
@@ -64,21 +61,21 @@ public class PrimaryController {
     private void handleSubmit(ActionEvent event) throws IOException {
         String textFieldValue = textFieldNumQuestions.getText();
         String comboBoxValue = comboBoxTemas.getValue();
-
-        // Load the second view
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("secondary.fxml"));
         
-        AnchorPane secondView = loader.load();
+        try {
 
-        // Pass data to the second view's controller
-        SecondaryController controller = loader.getController();
-        controller.setData(textFieldValue, comboBoxValue);
-        App.setRoot("secondary");
+                int input = Integer.parseInt(textFieldNumQuestions.getText());
 
-        // Create a new stage for the second view
-        Stage stage = new Stage();
-        stage.setTitle("Second View");
-        stage.setScene(new Scene(secondView));
-        stage.show();
-    }
+                game.setNumQuestions(input);
+                // then call the next question
+                
+                // Switch to the secondary view
+                App.setRoot("secondary");
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle the exception appropriately
+            }
+        }
+ 
+    
 }

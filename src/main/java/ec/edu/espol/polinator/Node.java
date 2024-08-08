@@ -7,15 +7,34 @@ package ec.edu.espol.polinator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
  * @author Gecko
  */
+
+
 public class Node<E>{
+    
+    
     E data;
     Node<E> left;
     Node<E> right;
+
+    public E getData() {
+        return data;
+    }
+
+    public Node<E> getLeft() {
+        return left;
+    }
+
+    public Node<E> getRight() {
+        return right;
+    }
+    
+    
     
 
     public Node(E data){
@@ -23,9 +42,11 @@ public class Node<E>{
         left = right = null;
     }
     
+    
     public boolean isLeaf(){
         return left==null && right==null;
     }
+    
     
     public List<Node<E>> childrenNodesList(){
         
@@ -45,11 +66,6 @@ public class Node<E>{
         
         return childrenNodes;
     }
-
-    @Override
-    public String toString() {
-        return "Node{" + "data=" + data + '}';
-    }
     
     public void addChildrenQuestion1(String question){
        // List<Node<E>> childrenNodes = childrenNodesList();
@@ -65,26 +81,7 @@ public class Node<E>{
         }
         //}
     }
-    /*
-    public void addChildrenQuestion(String question){
-        if(this==null){
-            return;
-        }
-        
-        Queue<Node<E>> queue = new LinkedList<>();
-        queue.add(this);
-        
-        while(!queue.isEmpty()){
-            int levelSize = queue.size();
-            
-            for(int i=0; i < levelSize; i++){
-                Node<E> node = queue.poll();
-                node.addQuestion(question);
-            }
-        }
-            
-    }
-    */
+   
     
     public void addChildrenQuestion(String question) {
         String[] tokens = question.split(";");
@@ -118,12 +115,7 @@ public class Node<E>{
         
         
     }
-    
-    public void addQuestion(String question){
-        Node<String> node = new Node(question);
-        this.left = (Node<E>) node;
-        this.right = (Node<E>) node;
-    }
+
 
     public void addChildrenAnswer(String question) {
         String[] tokens = question.split(" ");
@@ -154,4 +146,12 @@ public class Node<E>{
         
         
     }
+
+    
+    @Override
+    public String toString() {
+        return "Node{" + "data=" + data + '}';
+    }
+    
+    
 }

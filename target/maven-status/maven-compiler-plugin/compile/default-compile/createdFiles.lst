@@ -1,6 +1,12 @@
+ec\edu\espol\polinator\GameController.class
+ec\edu\espol\polinator\SecondaryController.class
+ec\edu\espol\polinator\IteratorTreeNode.class
 ec\edu\espol\polinator\Utility.class
 module-info.class
+ec\edu\espol\polinator\IterableCollectionTree.class
 ec\edu\espol\polinator\App.class
+ec\edu\espol\polinator\Game.class
+ec\edu\espol\polinator\IteratorTreeNodeDecision.class
 ec\edu\espol\polinator\Node.class
+ec\edu\espol\polinator\TreeNodeDecision.class
 ec\edu\espol\polinator\PrimaryController.class
-ec\edu\espol\polinator\SecondaryController.class
