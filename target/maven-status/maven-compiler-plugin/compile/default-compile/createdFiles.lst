@@ -1,6 +1,11 @@
+ec\edu\espol\polinator\ControladorController.class
+ec\edu\espol\polinator\WinnerController.class
+ec\edu\espol\polinator\GameController.class
+ec\edu\espol\polinator\SecondaryController.class
 ec\edu\espol\polinator\Utility.class
 module-info.class
+ec\edu\espol\polinator\LoseController.class
 ec\edu\espol\polinator\App.class
+ec\edu\espol\polinator\PossiblesController.class
 ec\edu\espol\polinator\Node.class
 ec\edu\espol\polinator\PrimaryController.class
-ec\edu\espol\polinator\SecondaryController.class

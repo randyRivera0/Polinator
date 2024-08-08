@@ -20,27 +20,30 @@ public class App extends Application {
 
     private static Scene scene;
 
+
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        scene = new Scene(loadFXML("primary_1").load(), 680, 480);
         stage.setScene(scene);
         stage.show();
-    }
+    }   
 
     static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+        scene.setRoot(loadFXML(fxml).load());
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
+    public static FXMLLoader loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
+        return fxmlLoader;
     }
 
     public static void main(String[] args) {
+        
+        launch();
         Node<String> node1 = cargarArchivoPreguntas();
         cargarArchivoRespuestas(node1);
                  
-        System.out.println("Piense un animal.");
+        /*System.out.println("Piense un animal.");
         Scanner sc = new Scanner(System.in);
         System.out.print("Numero de preguntas: ");
         
@@ -50,10 +53,8 @@ public class App extends Application {
             n = sc.nextInt();
         } while(n<0);
         
-        preguntar(node1, n);
-        
-        launch();
-        
+        preguntar(node1, n);*/
+ 
     }
         
     public static boolean preguntar(Node root, int n){
