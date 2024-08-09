@@ -2,32 +2,63 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.polinator.ControladorController">
-   <top>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido al juego polinator" BorderPane.alignment="CENTER" />
-   </top>
    <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="vpaneOptions" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <ComboBox fx:id="comboBoxTemas" onAction="#comboAction" prefWidth="150.0">
+            <Button fx:id="ButtonSubmit" mnemonicParsing="false" onAction="#Submit" prefHeight="25.0" prefWidth="100.0" text="SUBMIT FILE">
                <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin></ComboBox>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="ButtonAnime" mnemonicParsing="false" onAction="#Anime" prefHeight="25.0" prefWidth="98.0" text="ANIME">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="ButtonAnimals" mnemonicParsing="false" onAction="#Animals" prefHeight="25.0" prefWidth="98.0" text="ANIMALES">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="buttonSuperHeroe" mnemonicParsing="false" onAction="#SuperHeroe" prefHeight="25.0" prefWidth="101.0" text="SUPERHEROES">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
             <TextField fx:id="textFieldNumQuestions" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Numero de preguntas">
                <VBox.margin>
-                  <Insets bottom="20.0" />
+                  <Insets bottom="20.0" top="10.0" />
                </VBox.margin></TextField>
-            <Button fx:id="ButtomGame" mnemonicParsing="false" onAction="#Inicio" text="Button" />
+            <Button fx:id="ButtomGame" mnemonicParsing="false" onAction="#Inicio" text="INICIAR" />
          </children>
       </VBox>
    </center>
    <left>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Aqui va la foto de la tortuga polinator adivinadora" BorderPane.alignment="CENTER" />
+      <VBox fx:id="vpaneGIF" alignment="CENTER" prefHeight="287.0" prefWidth="381.0" BorderPane.alignment="CENTER" />
    </left>
+   <top>
+      <HBox fx:id="hpaneTop" alignment="CENTER" prefHeight="67.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="hpaneLabel" prefHeight="42.0" prefWidth="422.0">
+               <children>
+                  <Label fx:id="titulo" prefHeight="71.0" prefWidth="422.0" text="BIENVENIDO AL JUEGO POLINATOR " textAlignment="CENTER" textFill="#0000006b">
+                     <font>
+                        <Font name="Palatino Linotype" size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children></HBox>
+   </top>
+   <bottom>
+      <HBox fx:id="hpaneBajo" prefHeight="63.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

@@ -4,6 +4,8 @@
  */
 package ec.edu.espol.polinator;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -11,6 +13,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +22,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -29,15 +37,33 @@ import javafx.stage.Stage;
  */
 public class ControladorController implements Initializable {
 
-    @FXML
     private ComboBox<String> comboBoxTemas;
     @FXML
     private TextField textFieldNumQuestions;
-    
-    private String [] options =  {"ACTORES","ANIMALES","ANIME","DEFAULT"};  
+     
     @FXML
     private Button ButtomGame;
         private Node<String> root;
+    @FXML
+    private VBox vpaneGIF;
+    @FXML
+    private VBox vpaneOptions;
+    @FXML
+    private HBox hpaneTop;
+    @FXML
+    private HBox hpaneBajo;
+    @FXML
+    private Label titulo;
+    @FXML
+    private Button ButtonSubmit;
+    @FXML
+    private Button ButtonAnime;
+    @FXML
+    private Button ButtonAnimals;
+    @FXML
+    private Button buttonSuperHeroe;
+    @FXML
+    private HBox hpaneLabel;
 
  
     /**
@@ -45,16 +71,67 @@ public class ControladorController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        comboBoxTemas.getItems().addAll(options);
+        try {
+            // TODO
+            vpaneGIF.setStyle("-fx-background-color: #FEF3E2;");  // Esto aplica un color de fondo azul claro
+            hpaneTop.setStyle("-fx-background-color: #BEC6A0;");
+            hpaneLabel.setStyle("-fx-background-color: #BEC6A0;");
+            hpaneBajo.setStyle("-fx-background-color:#BEC6A0 ;");
+            vpaneOptions.setStyle("-fx-background-color: #FEF3E2;");
+            titulo.setStyle("-fx-text-fill: #1A5319;"); 
+            //#BEC6A0
+            
+
+            // Cargar el GIF
+            Image image = new Image(new FileInputStream("img/"+"turtle"+".gif"));
+            ImageView imv = new ImageView(image);
+            
+            
+            imv.setFitWidth(250);
+            imv.setFitHeight(250);
+            vpaneGIF.getChildren().add(imv);
+        } 
+        
+        catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        
+        HiloFlashHBox hilo = new HiloFlashHBox(hpaneLabel);
+        hilo.setDaemon(true);
+        hilo.start();
     }    
+    
+    
+      class HiloFlashHBox extends Thread {
+            private HBox hbox;
+
+            HiloFlashHBox(HBox hbox) {
+                this.hbox = hbox;
+                hbox.setStyle("-fx-background-color: #BEC6A0;");
+            }
+
+            @Override
+            public void run() {
+                boolean visible = true;
+
+                while (true) {
+                    visible = !visible;
+                    boolean finalVisible = visible;
+                    Platform.runLater(() -> {
+                        hbox.setVisible(finalVisible);
+                    });
+                    try {
+                        Thread.sleep(1500);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        }
     
     
     
 
-    @FXML
-    private void comboAction(ActionEvent event) {
-    }
 
         @FXML
         private void Inicio(ActionEvent event) {
@@ -139,6 +216,65 @@ public class ControladorController implements Initializable {
         Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
         a.show();
     }
+    }
+
+            @FXML
+   private void Init(ActionEvent event, int numQuestions ) {
+           
+  
+
+    root = cargarArchivoPreguntas("Anime");
+    cargarArchivoRespuestas(root, "Anime");
+
+    // Pasar la información necesaria al controlador del juego
+    AbrirVentana("Game", root, numQuestions);
+    
+    System.out.println(numQuestions);
+
+    
+        
+    }
+    
+    
+    @FXML
+    private void Submit(ActionEvent event) {
+    }
+
+    @FXML
+    private void Anime(ActionEvent event) {
+        
+    String input = textFieldNumQuestions.getText();
+    int numQuestions;
+
+    try {
+        // Intentar convertir el texto a un entero
+        numQuestions = Integer.parseInt(input);
+
+        // Verificar si el número es menor o igual a 0
+        if (numQuestions <= 0) {
+            showAlert("El número de preguntas debe ser mayor a 0");
+            return;
+        }
+
+        // Continuar con la lógica si el número es válido
+        Init(event, numQuestions);
+        Button b = (Button) event.getSource();
+        Stage s = (Stage) b.getScene().getWindow();
+        s.close();
+    } catch (NumberFormatException e) {
+        // Si la conversión falla, mostrar un mensaje de error
+        showAlert("Por favor, ingrese un número válido.");
+    }
+        
+    }
+
+    @FXML
+    private void Animals(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void SuperHeroe(ActionEvent event) {
     }
     
 

@@ -1,4 +1,4 @@
-Es este personaje de AOT?;
+Es este personaje de AOT?
 Es este personaje de SpyXFamily?;0
 Ha poseido titanes?;1
 Es un personaje de Avatar?;0;0
