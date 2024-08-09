@@ -23,6 +23,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -48,6 +49,10 @@ public class GameController implements Initializable {
     private Button buttonReturn;
     @FXML
     private VBox vpaneCentral;
+    @FXML
+    private HBox hpaneTop;
+    @FXML
+    private HBox hpaneBottom;
     
 
 
@@ -56,7 +61,9 @@ public class GameController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       hpaneBottom.setStyle("-fx-background-color: #CCD5AE;");
+       hpaneTop.setStyle("-fx-background-color: #CCD5AE;");
+            vpaneCentral.setStyle("-fx-background-color: #E0E5B6;");
         
     }    
     
@@ -189,14 +196,22 @@ public class GameController implements Initializable {
     private void CargarImagen(String data){
         
         try {
-                
+            
                 Image image = new Image(new FileInputStream("img/"+data+".jpg"));
                 ImageView imv = new ImageView(image);
                 
               
                 imv.setFitWidth(350);
                 imv.setFitHeight(350);
-                vpaneCentral.getChildren().add(imv);
+                VBox vbox = new VBox();
+                vbox.setSpacing(5);
+                vbox.setPadding(new Insets(10)); 
+                vbox.getChildren().add(imv);
+                vbox.setAlignment(Pos.CENTER);
+                vbox.setFillWidth(true);
+                
+                vpaneCentral.getChildren().add(vbox);
+                
             } catch (FileNotFoundException ex) {
                 ex.printStackTrace();
             }

@@ -16,6 +16,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -34,12 +36,29 @@ public class OptionsController implements Initializable {
     
     private int questions;
     List<String> list;
+    @FXML
+    private HBox hpaneTop;
+    @FXML
+    private VBox vpaneLeft;
+    @FXML
+    private HBox hpaneBottom;
+    @FXML
+    private VBox Central;
+    @FXML
+    private VBox vapenRight;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        hpaneBottom.setStyle("-fx-background-color: #FAEDCE;"); 
+        hpaneTop.setStyle("-fx-background-color: #FAEDCE;");  // Esto aplica un color de fondo azul claro
+            vpaneLeft.setStyle("-fx-background-color: #FAEDCE;");
+            vapenRight.setStyle("-fx-background-color: #FAEDCE;");
+            Central.setStyle("-fx-background-color:#FEFAE0 ;");
+
         
         
         

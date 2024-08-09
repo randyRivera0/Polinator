@@ -11,21 +11,21 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.polinator.OptionsController">
    <top>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="hpaneTop" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="labelOptions" prefHeight="54.0" prefWidth="262.0" text="PIENSA EN UNO DE ESTOS: ">
+            <Label fx:id="labelOptions" prefHeight="54.0" prefWidth="417.0" text="PIENSA EN UNO DE ESTOS: ">
                <font>
-                  <Font name="Bodoni MT Black" size="17.0" />
+                  <Font name="Bodoni MT Black" size="27.0" />
                </font>
             </Label>
          </children>
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+      <VBox fx:id="vpaneLeft" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
    </left>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="102.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="hpaneBottom" alignment="CENTER" prefHeight="102.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#Return" text="REGRESAR">
                <HBox.margin>
@@ -37,10 +37,10 @@
       </HBox>
    </bottom>
    <right>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+      <VBox fx:id="vapenRight" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
    </right>
    <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="Central" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="labelCentral">
                <font>
