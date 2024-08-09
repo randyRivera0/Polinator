@@ -4,7 +4,10 @@
  */
 package ec.edu.espol.polinator;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,4 +43,26 @@ public class Utility {
         }
     }
     
+    public static List<String> loadanswers(String archivo){
+        
+        List<String> nombres = new ArrayList<>();
+
+        
+        // Leer el archivo línea por línea
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                // Dividir la línea en palabras (el primer elemento será el nombre)
+                String[] partes = linea.split(" ");
+                String nombre = partes[0];  // Obtener el primer elemento como nombre
+
+                // Agregar el nombre a la lista
+                nombres.add(nombre);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return nombres;
+
+    }
 }

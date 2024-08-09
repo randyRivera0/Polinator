@@ -48,6 +48,7 @@ public class GameController implements Initializable {
     private Button buttonReturn;
     @FXML
     private VBox vpaneCentral;
+    
 
 
     /**
@@ -94,14 +95,12 @@ public class GameController implements Initializable {
     }
     
      private void handleAnswer(boolean affirmative) {
-            System.out.println(currentNode.childrenNodesList());
+            
             if (currentNode == null) {
                 //showAlert("No existe ningún animal que coincida con las respuestas provistas.");
                  TextoPregunta.setText("");
-                    CargarImagen("sad");
-                    
-                    
-                    System.out.println(currentNode.childrenNodesList());
+                    CargarGif("img/"+"sad"+".gif");
+
                     textFINAL.setText("PARECE SER QUE NO ENCONTRE EL PERSONAJE :(");
                     ButtonSi.setVisible(false);
                     ButtonNo.setVisible(false);
@@ -130,7 +129,7 @@ public class GameController implements Initializable {
                 // Si las preguntas restantes son 0 después de decrementar, mostramos alerta
                 if (remainingQuestions == 0) {
                        TextoPregunta.setText("");
-                      CargarImagen("confuse");
+                      CargarGif("img/"+"surprise"+".gif");
 
                             List<Node<String>> possibleNodes = currentNode.childrenNodesList();
                       StringBuilder nodesText = new StringBuilder("POSIBLEMENTE SEA UNO DE ESTOS:\n");
@@ -154,10 +153,8 @@ public class GameController implements Initializable {
                 //showAlert("No suficientes preguntas. Nodo: " + currentNode.childrenNodesList());
                 //AbrirVentana("Possibles");
                 TextoPregunta.setText("");
-                    CargarImagen("confuse");
-                    
-                    
-                    System.out.println(currentNode.childrenNodesList());
+                    CargarGif("img/"+"surprise"+".gif");
+
                     
                            List<Node<String>> possibleNodes = currentNode.childrenNodesList();
                       StringBuilder nodesText = new StringBuilder("POSIBLEMENTE SEA UNO DE ESTOS:\n");
@@ -205,6 +202,23 @@ public class GameController implements Initializable {
             }
                 
         
+    }
+    
+    
+    private void CargarGif(String ruta){
+    try {
+                
+                Image image = new Image(new FileInputStream(ruta));
+                ImageView imv = new ImageView(image);
+                
+              
+                imv.setFitWidth(350);
+                imv.setFitHeight(350);
+                vpaneCentral.getChildren().add(imv);
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            }
+    
     }
 
     

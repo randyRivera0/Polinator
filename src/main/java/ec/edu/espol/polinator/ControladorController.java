@@ -135,42 +135,16 @@ public class ControladorController implements Initializable {
 
         @FXML
         private void Inicio(ActionEvent event) {
-              String selectedCategory = comboBoxTemas.getValue();
-        int numQuestions;
-
-        try {
-            numQuestions = Integer.parseInt(textFieldNumQuestions.getText());
-        } catch (NumberFormatException e) {
-            showAlert("Número de preguntas no válido");
-            return;
-        }
-
-        if (numQuestions <= 0) {
-            showAlert("Número de preguntas debe ser mayor a 0");
-            return;
-        }
+             
         
-
-    root = cargarArchivoPreguntas(selectedCategory);
-    cargarArchivoRespuestas(root, selectedCategory);
-
-    // Pasar la información necesaria al controlador del juego
-    AbrirVentana("Game", root, numQuestions);
-    
-    System.out.println(numQuestions);
-
-    Button b = (Button) event.getSource();
-    Stage s = (Stage) b.getScene().getWindow();
-    s.close();
-        
-    }
+            }
         private void showAlert(String message) {
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle("Información");
-    alert.setHeaderText(null);
-    alert.setContentText(message);
-    alert.showAndWait();
-}
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Información");
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+            alert.showAndWait();
+        }
     
     private Node<String> cargarArchivoPreguntas(String category) {
         //Path path = Paths.get(category.toLowerCase() + "_preguntas.txt");
@@ -203,7 +177,9 @@ public class ControladorController implements Initializable {
         }
     }
 
-    public void AbrirVentana(String ruta, Node<String> root, int numQuestions) {
+    
+    
+    /*public void AbrirVentana(String ruta, Node<String> root, int numQuestions) {
        try {
         FXMLLoader fxml = App.loadFXML(ruta);
         Scene sc = new Scene(fxml.load(), 850, 600);
@@ -216,18 +192,37 @@ public class ControladorController implements Initializable {
         Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
         a.show();
     }
+    }*/
+
+     
+     public void OpenWindow(Node<String> root, int numQuestions, List<String> answ){
+    
+         try {
+        FXMLLoader fxml = App.loadFXML("Options");
+        Scene sc = new Scene(fxml.load(), 850, 600);
+        Stage st = new Stage();
+        OptionsController controller = fxml.getController();
+        controller.initData(root, numQuestions, answ); // Pasar la referencia del Stage al controlador del juego
+        st.setScene(sc);
+        st.show();
+    } catch (IOException ex) {
+        Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
+        a.show();
     }
+    }
+     
 
             @FXML
-   private void Init(ActionEvent event, int numQuestions ) {
+   private void Init(ActionEvent event, String option , int numQuestions) {
            
   
-
-    root = cargarArchivoPreguntas("Anime");
-    cargarArchivoRespuestas(root, "Anime");
+    //List<String> answ=Utility.loadanswers(option+".txt");
+    List<String> answ=Utility.loadanswers("respuestas.txt");
+    root = cargarArchivoPreguntas(option);
+    cargarArchivoRespuestas(root, option);
 
     // Pasar la información necesaria al controlador del juego
-    AbrirVentana("Game", root, numQuestions);
+    OpenWindow(root, numQuestions, answ);
     
     System.out.println(numQuestions);
 
@@ -243,6 +238,8 @@ public class ControladorController implements Initializable {
     @FXML
     private void Anime(ActionEvent event) {
         
+    
+        
     String input = textFieldNumQuestions.getText();
     int numQuestions;
 
@@ -257,7 +254,7 @@ public class ControladorController implements Initializable {
         }
 
         // Continuar con la lógica si el número es válido
-        Init(event, numQuestions);
+        Init(event, "Anime",numQuestions);
         Button b = (Button) event.getSource();
         Stage s = (Stage) b.getScene().getWindow();
         s.close();
@@ -265,7 +262,9 @@ public class ControladorController implements Initializable {
         // Si la conversión falla, mostrar un mensaje de error
         showAlert("Por favor, ingrese un número válido.");
     }
-        
+      
+        System.out.println(Utility.loadanswers("respuestas.txt"));
+    
     }
 
     @FXML
@@ -276,6 +275,9 @@ public class ControladorController implements Initializable {
     @FXML
     private void SuperHeroe(ActionEvent event) {
     }
+    
+    
+    
     
 
 }
