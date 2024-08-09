@@ -95,7 +95,7 @@ public class ControladorController implements Initializable {
     alert.showAndWait();
 }
     
-        private Node<String> cargarArchivoPreguntas(String category) {
+    private Node<String> cargarArchivoPreguntas(String category) {
         //Path path = Paths.get(category.toLowerCase() + "_preguntas.txt");
         Path path = Paths.get("preguntas.txt");
         try {
@@ -141,19 +141,5 @@ public class ControladorController implements Initializable {
     }
     }
     
-    
-    /*public void AbrirVentana(String ruta){
-            try {
-            FXMLLoader fxml = App.loadFXML(ruta);
-            Scene sc = new Scene(fxml.load(),850,600);
-            Stage st = new Stage();
-            st.setScene(sc);
-            st.show();
-            
-        } catch (IOException ex) {
-            Alert a = new Alert(Alert.AlertType.ERROR,"No se pudo abrir el fxml");
-            a.show();
-        }
-    }*/
-    
+
 }
