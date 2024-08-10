@@ -41,8 +41,6 @@ public class ControladorController implements Initializable {
     @FXML
     private TextField textFieldNumQuestions;
      
-    @FXML
-    private Button ButtomGame;
         private Node<String> root;
     @FXML
     private VBox vpaneGIF;
@@ -99,7 +97,17 @@ public class ControladorController implements Initializable {
         HiloFlashHBox hilo = new HiloFlashHBox(hpaneLabel);
         hilo.setDaemon(true);
         hilo.start();
+        System.out.println(GameSet.getInstance().getGames().size());
     }    
+
+    @FXML
+    private void MyGames(ActionEvent event) {
+        
+        Abrir("UserGames");
+        
+        
+        
+    }
     
     
       class HiloFlashHBox extends Thread {
@@ -133,11 +141,6 @@ public class ControladorController implements Initializable {
     
 
 
-        @FXML
-        private void Inicio(ActionEvent event) {
-             
-        
-            }
         private void showAlert(String message) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Información");
@@ -212,7 +215,6 @@ public class ControladorController implements Initializable {
     }
      
 
-            @FXML
    private void Init(ActionEvent event, String option , int numQuestions) {
            
   
@@ -233,6 +235,13 @@ public class ControladorController implements Initializable {
     
     @FXML
     private void Submit(ActionEvent event) {
+        Abrir("Usertxt");
+        Button b = (Button) event.getSource();
+        Stage s = (Stage) b.getScene().getWindow();
+        s.close();
+        
+        
+        
     }
 
     @FXML
@@ -277,6 +286,23 @@ public class ControladorController implements Initializable {
     }
     
     
+    
+         
+     public void Abrir(String ruta){
+
+          try {
+           FXMLLoader fxml = App.loadFXML(ruta);
+           Scene sc = new Scene(fxml.load(), 850, 600);
+           Stage st = new Stage();
+
+           st.setScene(sc);
+           st.show();
+       } catch (IOException ex) {
+           Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
+           a.show();
+       }
+    }
+     
     
     
 

@@ -37,7 +37,7 @@
                <VBox.margin>
                   <Insets bottom="20.0" top="10.0" />
                </VBox.margin></TextField>
-            <Button fx:id="ButtomGame" mnemonicParsing="false" onAction="#Inicio" text="INICIAR" />
+            <Button mnemonicParsing="false" onAction="#MyGames" text="MY GAMES" />
          </children>
       </VBox>
    </center>

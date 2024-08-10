@@ -1,13 +1,14 @@
 ec\edu\espol\polinator\OptionsController.class
 ec\edu\espol\polinator\ControladorController$HiloFlashHBox.class
+ec\edu\espol\polinator\UsertxtController.class
 ec\edu\espol\polinator\ControladorController.class
-ec\edu\espol\polinator\WinnerController.class
 ec\edu\espol\polinator\GameController.class
 ec\edu\espol\polinator\SecondaryController.class
+ec\edu\espol\polinator\GameSet.class
 ec\edu\espol\polinator\Utility.class
 module-info.class
-ec\edu\espol\polinator\LoseController.class
 ec\edu\espol\polinator\App.class
-ec\edu\espol\polinator\PossiblesController.class
+ec\edu\espol\polinator\Game.class
+ec\edu\espol\polinator\UserGamesController.class
 ec\edu\espol\polinator\Node.class
 ec\edu\espol\polinator\PrimaryController.class
