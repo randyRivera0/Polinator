@@ -20,11 +20,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 /**
@@ -53,8 +58,10 @@ public class GameController implements Initializable {
     private HBox hpaneTop;
     @FXML
     private HBox hpaneBottom;
+    @FXML
+    private BorderPane borderPane;
+    private TextArea text;
     
-
 
     /**
      * Initializes the controller class.
@@ -64,7 +71,7 @@ public class GameController implements Initializable {
        hpaneBottom.setStyle("-fx-background-color: #CCD5AE;");
        hpaneTop.setStyle("-fx-background-color: #CCD5AE;");
             vpaneCentral.setStyle("-fx-background-color: #E0E5B6;");
-        
+        text= new TextArea();
     }    
     
     
@@ -135,21 +142,33 @@ public class GameController implements Initializable {
 
                 // Si las preguntas restantes son 0 después de decrementar, mostramos alerta
                 if (remainingQuestions == 0) {
-                       TextoPregunta.setText("");
-                      CargarGif("img/"+"surprise"+".gif");
-
-                            List<Node<String>> possibleNodes = currentNode.childrenNodesList();
-                      StringBuilder nodesText = new StringBuilder("POSIBLEMENTE SEA UNO DE ESTOS:\n");
+                    TextoPregunta.setText("");
+                    CargarGif("img/"+"surprise"+".gif");
+                    List<Node<String>> possibleNodes = currentNode.childrenNodesList();
+                    StringBuilder nodesText = new StringBuilder("POSIBLEMENTE SEA "+"\n"+"UNO DE ESTOS:\n");
 
                       for (Node<String> node : possibleNodes) {
-                          nodesText.append(node.data).append("\n");
+                         
+                          nodesText.append(" - ").append(node.data).append("\n");
+                          
                       }
-
-                      textFINAL.setText(nodesText.toString());
-                     ButtonSi.setVisible(false);
+                      
+                     
+                    VBox v= new VBox();
+                    v.setStyle("-fx-background-color: #E0E5B6;");
+                    Label a= new Label();
+                    a.setTextAlignment(TextAlignment.CENTER);
+                     a.setFont(new Font("Bookman Old Style", 24)); 
+                    ButtonSi.setVisible(false);
                     ButtonNo.setVisible(false);
-
-                      return;
+                    a.setText(nodesText.toString());
+                    StackPane root = new StackPane();
+                    root.getChildren().add(a);
+                    v.getChildren().add(root);
+                    v.setAlignment(Pos.CENTER);
+                    v.setFillWidth(true);
+                    borderPane.setLeft(v);
+                    return;
                 } 
                 else {
                     if (currentNode != null && !currentNode.isLeaf()) {
@@ -160,7 +179,7 @@ public class GameController implements Initializable {
                 //showAlert("No suficientes preguntas. Nodo: " + currentNode.childrenNodesList());
                 //AbrirVentana("Possibles");
                 TextoPregunta.setText("");
-                    CargarGif("img/"+"surprise"+".gif");
+                CargarGif("img/"+"surprise"+".gif");
 
                     
                            List<Node<String>> possibleNodes = currentNode.childrenNodesList();
@@ -170,9 +189,22 @@ public class GameController implements Initializable {
                           nodesText.append(node.data).append("\n");
                       }
 
-                      textFINAL.setText(nodesText.toString());
                     ButtonSi.setVisible(false);
                     ButtonNo.setVisible(false);
+                    VBox v= new VBox();
+                    v.setStyle("-fx-background-color: #E0E5B6;");
+                    Label a= new Label();
+                    a.setTextAlignment(TextAlignment.CENTER);
+                     a.setFont(new Font("Bookman Old Style", 24)); 
+                    ButtonSi.setVisible(false);
+                    ButtonNo.setVisible(false);
+                    a.setText(nodesText.toString());
+                    StackPane root = new StackPane();
+                    root.getChildren().add(a);
+                    v.getChildren().add(root);
+                    v.setAlignment(Pos.CENTER);
+                    v.setFillWidth(true);
+                    borderPane.setLeft(v);
 
                     return;
             }
@@ -227,8 +259,8 @@ public class GameController implements Initializable {
                 ImageView imv = new ImageView(image);
                 
               
-                imv.setFitWidth(350);
-                imv.setFitHeight(350);
+                imv.setFitWidth(450);
+                imv.setFitHeight(450);
                 vpaneCentral.getChildren().add(imv);
             } catch (FileNotFoundException ex) {
                 ex.printStackTrace();
