@@ -29,7 +29,7 @@ public class PrimaryController implements GameController {
     private void initialize() {
         // Add a key event handler to the TextField
         textFieldNumQuestions.setOnKeyPressed(this::handleKeyPress);
-        List<String> temas = Utility.cargarTemas("C:\\Users\\spupi\\Downloads\\Polinator");
+        List<String> temas = Utility.cargarTemas("C:\\Users\\spupi\\Documents\\randy\\courses\\DataStructures\\Polinator");
         updateComboBox(temas);
     }
     
