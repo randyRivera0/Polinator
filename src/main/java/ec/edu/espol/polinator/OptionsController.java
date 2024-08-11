@@ -73,7 +73,7 @@ public class OptionsController implements Initializable {
         
          StringBuilder nodesText = new StringBuilder("\n");
 
-                      for (String node : list) {
+        for (String node : list) {
                           nodesText.append(node).append("\n");
                       }
 

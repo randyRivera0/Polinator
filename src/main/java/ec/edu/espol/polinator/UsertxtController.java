@@ -57,7 +57,7 @@ public class UsertxtController implements Initializable {
                  s.close();
                
            } else {
-               System.out.println("Debe subir ambos archivos antes de crear un juego.");
+               showAlert("Porfavor sube los dos archivoc completos.");
            }
     }
 
@@ -103,4 +103,13 @@ public class UsertxtController implements Initializable {
         s.close();
         
     }
+    
+    
+        private void showAlert(String message) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Información");
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+            alert.showAndWait();
+        }
 }

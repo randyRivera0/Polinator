@@ -245,7 +245,31 @@ public class GameController implements Initializable {
                 vpaneCentral.getChildren().add(vbox);
                 
             } catch (FileNotFoundException ex) {
-                ex.printStackTrace();
+                    
+        
+        // Si no se encuentra la imagen, cargar el GIF de error
+        try {
+            Image errorImage = new Image(new FileInputStream("img/error.gif"));
+            ImageView imvError = new ImageView(errorImage);
+            
+            // Configurar las propiedades del GIF
+            imvError.setFitWidth(550);
+            imvError.setFitHeight(550);
+
+            // Crear un VBox y agregar el GIF
+            VBox vboxError = new VBox();
+            vboxError.setSpacing(5);
+            vboxError.setPadding(new Insets(10));
+            vboxError.getChildren().add(imvError);
+            vboxError.setAlignment(Pos.CENTER);
+            vboxError.setFillWidth(true);
+
+            // Agregar el VBox con el GIF al contenedor central
+            vpaneCentral.getChildren().add(vboxError);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace(); // En caso extremo, si el GIF tampoco se encuentra
+        }
             }
                 
         

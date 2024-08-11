@@ -102,10 +102,38 @@ public class ControladorController implements Initializable {
 
     @FXML
     private void MyGames(ActionEvent event) {
+        String input = textFieldNumQuestions.getText();
+        int numQuestions;
+         try {
+             
+             numQuestions = Integer.parseInt(input);
+            if (numQuestions <= 0) {
+                showAlert("El número de preguntas debe ser mayor a 0");
+                return;
+            }
+            try {
+               FXMLLoader fxml = App.loadFXML("UserGames");
+               Scene sc = new Scene(fxml.load(), 850, 600);
+               Stage st = new Stage();
+               UserGamesController controller = fxml.getController();
+              controller.setQuestions(numQuestions);
+               st.setScene(sc);
+               st.show();
+           } catch (IOException ex) {
+               Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
+               a.show();
+           }
+          
+            Button b = (Button) event.getSource();
+            Stage s = (Stage) b.getScene().getWindow();
+            s.close();
+        } catch (NumberFormatException e) {
+            // Si la conversión falla, mostrar un mensaje de error
+            showAlert("Por favor, ingrese un número válido.");
+        }
+     
         
-        Abrir("UserGames");
-        
-        
+   
         
     }
     
@@ -152,6 +180,7 @@ public class ControladorController implements Initializable {
     private Node<String> cargarArchivoPreguntas(String category) {
         //Path path = Paths.get(category.toLowerCase() + "_preguntas.txt");
         Path path = Paths.get("preguntas.txt");
+        System.out.println(path);
         try {
             List<String> questions = Files.readAllLines(path);
             Node<String> root = new Node<>(questions.get(0));
@@ -235,7 +264,18 @@ public class ControladorController implements Initializable {
     
     @FXML
     private void Submit(ActionEvent event) {
-        Abrir("Usertxt");
+      
+        try {
+           FXMLLoader fxml = App.loadFXML("Usertxt");
+           Scene sc = new Scene(fxml.load(), 850, 600);
+           Stage st = new Stage();
+
+           st.setScene(sc);
+           st.show();
+       } catch (IOException ex) {
+           Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
+           a.show();
+       }
         Button b = (Button) event.getSource();
         Stage s = (Stage) b.getScene().getWindow();
         s.close();
@@ -247,32 +287,32 @@ public class ControladorController implements Initializable {
     @FXML
     private void Anime(ActionEvent event) {
         
-    
-        
-    String input = textFieldNumQuestions.getText();
-    int numQuestions;
 
-    try {
-        // Intentar convertir el texto a un entero
-        numQuestions = Integer.parseInt(input);
 
-        // Verificar si el número es menor o igual a 0
-        if (numQuestions <= 0) {
-            showAlert("El número de preguntas debe ser mayor a 0");
-            return;
+        String input = textFieldNumQuestions.getText();
+        int numQuestions;
+
+        try {
+            // Intentar convertir el texto a un entero
+            numQuestions = Integer.parseInt(input);
+
+            // Verificar si el número es menor o igual a 0
+            if (numQuestions <= 0) {
+                showAlert("El número de preguntas debe ser mayor a 0");
+                return;
+            }
+
+            // Continuar con la lógica si el número es válido
+            Init(event, "Anime",numQuestions);
+            Button b = (Button) event.getSource();
+            Stage s = (Stage) b.getScene().getWindow();
+            s.close();
+        } catch (NumberFormatException e) {
+            // Si la conversión falla, mostrar un mensaje de error
+            showAlert("Por favor, ingrese un número válido.");
         }
 
-        // Continuar con la lógica si el número es válido
-        Init(event, "Anime",numQuestions);
-        Button b = (Button) event.getSource();
-        Stage s = (Stage) b.getScene().getWindow();
-        s.close();
-    } catch (NumberFormatException e) {
-        // Si la conversión falla, mostrar un mensaje de error
-        showAlert("Por favor, ingrese un número válido.");
-    }
-      
-        System.out.println(Utility.loadanswers("respuestas.txt"));
+            System.out.println(Utility.loadanswers("respuestas.txt"));
     
     }
 
@@ -287,21 +327,7 @@ public class ControladorController implements Initializable {
     
     
     
-         
-     public void Abrir(String ruta){
-
-          try {
-           FXMLLoader fxml = App.loadFXML(ruta);
-           Scene sc = new Scene(fxml.load(), 850, 600);
-           Stage st = new Stage();
-
-           st.setScene(sc);
-           st.show();
-       } catch (IOException ex) {
-           Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
-           a.show();
-       }
-    }
+    
      
     
     
