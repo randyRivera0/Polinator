@@ -81,7 +81,7 @@ public class ControladorController implements Initializable {
             
 
             // Cargar el GIF
-            Image image = new Image(new FileInputStream("img/"+"turtle"+".gif"));
+            Image image = new Image(getClass().getResourceAsStream("/img/turtle.gif"));
             ImageView imv = new ImageView(image);
             
             
@@ -90,7 +90,7 @@ public class ControladorController implements Initializable {
             vpaneGIF.getChildren().add(imv);
         } 
         
-        catch (FileNotFoundException ex) {
+        catch (NullPointerException ex) {
             ex.printStackTrace();
         }
         

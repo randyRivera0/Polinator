@@ -57,7 +57,7 @@ public class UsertxtController implements Initializable {
                  s.close();
                
            } else {
-               showAlert("Porfavor sube los dos archivoc completos.");
+               showAlert("Porfavor sube los dos archivos completos.");
            }
     }
 

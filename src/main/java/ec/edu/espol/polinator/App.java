@@ -12,6 +12,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 /**
  * JavaFX App
@@ -19,11 +22,24 @@ import java.util.Scanner;
 public class App extends Application {
 
     private static Scene scene;
-
+    
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary_1").load(), 680, 480);
+         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Inicio.fxml"));
+        Parent root = fxmlLoader.load();
+        scene = new Scene(root, 680, 480);
+
+        // Agregar la imagen programáticamente
+        Image image = new Image(getClass().getResourceAsStream("/img/inicio.jpg"));
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(680);
+        imageView.setFitHeight(480);
+
+        // Asegúrate de que el rootPane esté bien definido
+        Pane rootPane = (Pane) scene.getRoot();
+        rootPane.getChildren().add(0, imageView); // Agregar imagen al fondo
+
         stage.setScene(scene);
         stage.show();
     }   

@@ -123,7 +123,7 @@ public class GameController implements Initializable {
             } else if (currentNode.isLeaf()) {
                 TextoPregunta.setText("");
                 if(currentNode.left==null){
-                    
+                System.out.println(getClass().getResource("/img/" + currentNode.data + ".jpg"));
                 CargarImagen(currentNode.data);
                 textFINAL.setText("EL PERSONAJE EN EL QUE PENSASTE ES:  "+currentNode.data+"!");
                 ButtonSi.setVisible(false);
@@ -228,8 +228,8 @@ public class GameController implements Initializable {
     private void CargarImagen(String data){
         
         try {
-            
-                Image image = new Image(new FileInputStream("img/"+data+".jpg"));
+            //Image image = new Image(new FileInputStream("img/"+data+".jpg"));
+                Image image = new Image(getClass().getResourceAsStream("/img/"+data+".jpg"));
                 ImageView imv = new ImageView(image);
                 
               
@@ -244,12 +244,12 @@ public class GameController implements Initializable {
                 
                 vpaneCentral.getChildren().add(vbox);
                 
-            } catch (FileNotFoundException ex) {
+            } catch (NullPointerException ex) {
                     
         
         // Si no se encuentra la imagen, cargar el GIF de error
         try {
-            Image errorImage = new Image(new FileInputStream("img/error.gif"));
+            Image errorImage = new Image(getClass().getResourceAsStream("/img/error.gif"));
             ImageView imvError = new ImageView(errorImage);
             
             // Configurar las propiedades del GIF
@@ -267,7 +267,7 @@ public class GameController implements Initializable {
             // Agregar el VBox con el GIF al contenedor central
             vpaneCentral.getChildren().add(vboxError);
 
-        } catch (FileNotFoundException e) {
+        } catch (NullPointerException e) {
             e.printStackTrace(); // En caso extremo, si el GIF tampoco se encuentra
         }
             }
@@ -275,18 +275,19 @@ public class GameController implements Initializable {
         
     }
     
-    
+
     private void CargarGif(String ruta){
     try {
                 
-                Image image = new Image(new FileInputStream(ruta));
+                //Image image = new Image(new FileInputStream(ruta));
+                Image image = new Image(getClass().getResourceAsStream("/"+ruta));
                 ImageView imv = new ImageView(image);
                 
               
                 imv.setFitWidth(450);
                 imv.setFitHeight(450);
                 vpaneCentral.getChildren().add(imv);
-            } catch (FileNotFoundException ex) {
+            } catch (NullPointerException ex) {
                 ex.printStackTrace();
             }
     
