@@ -1,0 +1,15 @@
+¿Tu animal tiene cuatro patas?
+¿Tu animal vuela?;0
+¿Tu animal puede estar en casa?;1
+¿Tu animal es de vida marina?;0;0
+¿Tu animal pone huevos?;0;1
+¿Tu animal es peligroso?;1;0
+¿Tu animal es mamifero?;1;1
+¿Tu animal se arrastra por el suelo?;0;0;0
+¿Tu animal se puede comer?;0;0;1
+¿Tu animal puede ver en la oscuridad?;0;1;0
+¿Tu animal tiene antenas?;0;1;1
+¿Tu animal puede estar en granja?;1;0;0
+¿Tu animal es carnivoro?;1;0;1
+¿Tu animal tiene pelaje?;1;1;0
+¿Tu animal ladra?;1;1;1

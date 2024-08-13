@@ -1,0 +1,7 @@
+real?
+youtube?;0
+girl?;1
+gamer?;0;0
+english?;0;1
+sister?;1;0
+concrete?;1;1

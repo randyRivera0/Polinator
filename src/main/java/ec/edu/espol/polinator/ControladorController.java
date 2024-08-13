@@ -179,7 +179,7 @@ public class ControladorController implements Initializable {
     
     private Node<String> cargarArchivoPreguntas(String category) {
         //Path path = Paths.get(category.toLowerCase() + "_preguntas.txt");
-        Path path = Paths.get("preguntas.txt");
+        Path path = Paths.get("preguntas3.txt");
         System.out.println(path);
         try {
             List<String> questions = Files.readAllLines(path);
@@ -198,7 +198,7 @@ public class ControladorController implements Initializable {
 
     private void cargarArchivoRespuestas(Node<String> root, String category) {
          //Path path = Paths.get(category.toLowerCase() + "_respuestas.txt");
-        Path path = Paths.get("respuestas.txt");
+        Path path = Paths.get("respuestas2.txt");
         try {
             List<String> questions = Files.readAllLines(path);
             for (String question : questions) {
