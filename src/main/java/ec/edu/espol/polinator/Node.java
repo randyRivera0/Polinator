@@ -17,6 +17,18 @@ public class Node<E>{
     Node<E> left;
     Node<E> right;
     
+    
+    public E getData() {
+        return data;
+    }
+
+    public Node<E> getLeft() {
+        return left;
+    }
+
+    public Node<E> getRight() {
+        return right;
+    }
 
     public Node(E data){
         this.data = data;

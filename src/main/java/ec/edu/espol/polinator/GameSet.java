@@ -8,33 +8,34 @@ package ec.edu.espol.polinator;
  *
  * @author leoza
  */
-import java.io.File;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameSet {
-
+    
     private static GameSet instance;
-    private List<Game> games;
+    private List<Round> rounds;
 
     private GameSet() {
-        games = new ArrayList<>();
+        rounds = new ArrayList<>();
+        
     }
-
+    
+    
     public static GameSet getInstance() {
         if (instance == null) {
             instance = new GameSet();
         }
         return instance;
     }
+    
 
-    public void addGame(File preguntasFile, File respuestasFile, String gameName) {
-        Game game = new Game(preguntasFile, respuestasFile, gameName);
-        games.add(game);
+    public void addGame(Round round) {
+        rounds.add(round);
     }
 
-    public List<Game> getGames() {
-        return games;
+    public List<Round> getGames() {
+        return rounds;
     }
 }

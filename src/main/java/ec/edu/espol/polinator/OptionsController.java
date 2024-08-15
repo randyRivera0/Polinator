@@ -6,7 +6,6 @@ package ec.edu.espol.polinator;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -26,16 +26,20 @@ import javafx.stage.Stage;
  * @author leoza
  */
 public class OptionsController implements Initializable {
-
+    
+    public Round round;
+    
     @FXML
     private Label labelOptions;
     @FXML
+    private Button buttonStart;
+    @FXML
+    private Button buttonPrevScene;
+    @FXML
+    private TextArea textAreaOptions;
+    @FXML
     private Label labelCentral;
-    
-    private Node<String> Node;
-    
-    private int questions;
-    List<String> list;
+       
     @FXML
     private HBox hpaneTop;
     @FXML
@@ -53,65 +57,42 @@ public class OptionsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        this.round = App.getRound();
+        
+        setQuestionsText();
+        
         hpaneBottom.setStyle("-fx-background-color: #FAEDCE;"); 
         hpaneTop.setStyle("-fx-background-color: #FAEDCE;");  // Esto aplica un color de fondo azul claro
-            vpaneLeft.setStyle("-fx-background-color: #FAEDCE;");
-            vapenRight.setStyle("-fx-background-color: #FAEDCE;");
-            Central.setStyle("-fx-background-color:#FEFAE0 ;");
-
-        
-        
-        
-    }    
+        vpaneLeft.setStyle("-fx-background-color: #FAEDCE;");
+        vapenRight.setStyle("-fx-background-color: #FAEDCE;");
+        Central.setStyle("-fx-background-color:#FEFAE0 ;");
+            
+    }
     
     
-     public void initData(Node<String> root, int numQuestions, List<String> list) {
-       
-        this.Node = root;
-        this.questions=numQuestions;
-        this.list=list;
-        
-         StringBuilder nodesText = new StringBuilder("\n");
-
-        for (String node : list) {
-                          nodesText.append(node).append("\n");
-                      }
-
-                       labelCentral.setText(nodesText.toString());
-        //labelCentral.setText(list.get(0));
-       
-       
+    public void setQuestionsText() {
+              
+        String text = round.getStringQuestions();
+        textAreaOptions.setText(text);
+              
     }
      
-     
-     public void AbrirVentana( Node<String> root, int numQuestions) {
+    @FXML
+    public void AbrirVentana(ActionEvent event) {
        try {
-        FXMLLoader fxml = App.loadFXML("Game");
-        Scene sc = new Scene(fxml.load(), 850, 600);
-        Stage st = new Stage();
-        GameController controller = fxml.getController();
-        controller.initData(root, numQuestions); // Pasar la referencia del Stage al controlador del juego
-        st.setScene(sc);
-        st.show();
-    } catch (IOException ex) {
-        Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
-        a.show();
-    }
+            App.setRoot("round");
+        } 
+        catch (IOException ex) {
+            Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
+            a.show();
+        }
     }
 
 
     @FXML
-    private void Return(ActionEvent event) {
+    private void prevScene(ActionEvent event) {
          try {
-            FXMLLoader fxml = App.loadFXML("primary_1");
-            Scene sc = new Scene(fxml.load(),850,600);
-            Stage st = new Stage();
-            st.setScene(sc);
-            st.show();
-            
-            Button b = (Button)event.getSource();
-            Stage s = (Stage) b.getScene().getWindow();
-            s.close();
+            App.setRoot("lobby");
         } catch (IOException ex) {
             Alert a = new Alert(Alert.AlertType.ERROR,"No se pudo abrir el fxml");
             a.show();
@@ -119,13 +100,26 @@ public class OptionsController implements Initializable {
         
         
     }
-
+    
+    
     @FXML
-    private void Iniciar(ActionEvent event) {
-        AbrirVentana(this.Node, this.questions);
+    private void uploadQuestions(ActionEvent event) {
+      
+        try {
+           FXMLLoader fxml = App.loadFXML("Usertxt");
+           Scene sc = new Scene(fxml.load(), 850, 600);
+           Stage st = new Stage();
+
+           st.setScene(sc);
+           st.show();
+       } catch (IOException ex) {
+           Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
+           a.show();
+       }
         Button b = (Button) event.getSource();
         Stage s = (Stage) b.getScene().getWindow();
         s.close();
+     
     }
-    
+     
 }

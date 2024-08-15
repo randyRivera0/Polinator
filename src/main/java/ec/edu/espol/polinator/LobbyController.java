@@ -4,8 +4,6 @@
  */
 package ec.edu.espol.polinator;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -21,7 +19,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -35,9 +32,8 @@ import javafx.stage.Stage;
  *
  * @author leoza
  */
-public class ControladorController implements Initializable {
+public class LobbyController implements Initializable {
 
-    private ComboBox<String> comboBoxTemas;
     @FXML
     private TextField textFieldNumQuestions;
      
@@ -53,15 +49,9 @@ public class ControladorController implements Initializable {
     @FXML
     private Label titulo;
     @FXML
-    private Button ButtonSubmit;
-    @FXML
-    private Button ButtonAnime;
-    @FXML
-    private Button ButtonAnimals;
-    @FXML
-    private Button buttonSuperHeroe;
-    @FXML
     private HBox hpaneLabel;
+    
+    public Round round;
 
  
     /**
@@ -69,7 +59,11 @@ public class ControladorController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+    
         try {
+            
+            this.round = App.getRound();
+            
             // TODO
             vpaneGIF.setStyle("-fx-background-color: #FEF3E2;");  // Esto aplica un color de fondo azul claro
             hpaneTop.setStyle("-fx-background-color: #BEC6A0;");
@@ -97,7 +91,7 @@ public class ControladorController implements Initializable {
         HiloFlashHBox hilo = new HiloFlashHBox(hpaneLabel);
         hilo.setDaemon(true);
         hilo.start();
-        System.out.println(GameSet.getInstance().getGames().size());
+        //System.out.println(GameSet.getInstance().getGames().size());
     }    
 
     @FXML
@@ -136,200 +130,78 @@ public class ControladorController implements Initializable {
    
         
     }
+ 
     
-    
-      class HiloFlashHBox extends Thread {
-            private HBox hbox;
+    class HiloFlashHBox extends Thread {
+        private HBox hbox;
 
-            HiloFlashHBox(HBox hbox) {
-                this.hbox = hbox;
-                hbox.setStyle("-fx-background-color: #BEC6A0;");
-            }
+        HiloFlashHBox(HBox hbox) {
+            this.hbox = hbox;
+            hbox.setStyle("-fx-background-color: #BEC6A0;");
+        }
 
-            @Override
-            public void run() {
-                boolean visible = true;
+        @Override
+        public void run() {
+            boolean visible = true;
 
-                while (true) {
-                    visible = !visible;
-                    boolean finalVisible = visible;
-                    Platform.runLater(() -> {
-                        hbox.setVisible(finalVisible);
-                    });
-                    try {
-                        Thread.sleep(1500);
-                    } catch (InterruptedException ex) {
-                        ex.printStackTrace();
-                    }
+            while (true) {
+                visible = !visible;
+                boolean finalVisible = visible;
+                Platform.runLater(() -> {
+                    hbox.setVisible(finalVisible);
+                });
+                try {
+                    Thread.sleep(1500);
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
                 }
             }
         }
-    
-    
-    
-
-
-        private void showAlert(String message) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Información");
-            alert.setHeaderText(null);
-            alert.setContentText(message);
-            alert.showAndWait();
-        }
-    
-    private Node<String> cargarArchivoPreguntas(String category) {
-        //Path path = Paths.get(category.toLowerCase() + "_preguntas.txt");
-        Path path = Paths.get("preguntas3.txt");
-        System.out.println(path);
-        try {
-            List<String> questions = Files.readAllLines(path);
-            Node<String> root = new Node<>(questions.get(0));
-            for (int i = 1; i < questions.size(); i++) {
-                String question = questions.get(i);
-                root.addChildrenQuestion(question);
-            }
-            return root;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-        
-
-    private void cargarArchivoRespuestas(Node<String> root, String category) {
-         //Path path = Paths.get(category.toLowerCase() + "_respuestas.txt");
-        Path path = Paths.get("respuestas2.txt");
-        try {
-            List<String> questions = Files.readAllLines(path);
-            for (String question : questions) {
-                root.addChildrenAnswer(question);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    
-    
-    /*public void AbrirVentana(String ruta, Node<String> root, int numQuestions) {
-       try {
-        FXMLLoader fxml = App.loadFXML(ruta);
-        Scene sc = new Scene(fxml.load(), 850, 600);
-        Stage st = new Stage();
-        GameController controller = fxml.getController();
-        controller.initData(root, numQuestions); // Pasar la referencia del Stage al controlador del juego
-        st.setScene(sc);
-        st.show();
-    } catch (IOException ex) {
-        Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
-        a.show();
-    }
-    }*/
-
-     
-     public void OpenWindow(Node<String> root, int numQuestions, List<String> answ){
-    
-         try {
-        FXMLLoader fxml = App.loadFXML("Options");
-        Scene sc = new Scene(fxml.load(), 850, 600);
-        Stage st = new Stage();
-        OptionsController controller = fxml.getController();
-        controller.initData(root, numQuestions, answ); // Pasar la referencia del Stage al controlador del juego
-        st.setScene(sc);
-        st.show();
-    } catch (IOException ex) {
-        Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
-        a.show();
-    }
-    }
-     
-
-   private void Init(ActionEvent event, String option , int numQuestions) {
-           
-  
-    //List<String> answ=Utility.loadanswers(option+".txt");
-    List<String> answ=Utility.loadanswers("respuestas.txt");
-    root = cargarArchivoPreguntas(option);
-    cargarArchivoRespuestas(root, option);
-
-    // Pasar la información necesaria al controlador del juego
-    OpenWindow(root, numQuestions, answ);
-    
-    System.out.println(numQuestions);
-
-    
-        
     }
     
-    
-    @FXML
-    private void Submit(ActionEvent event) {
-      
-        try {
-           FXMLLoader fxml = App.loadFXML("Usertxt");
-           Scene sc = new Scene(fxml.load(), 850, 600);
-           Stage st = new Stage();
 
-           st.setScene(sc);
-           st.show();
-       } catch (IOException ex) {
-           Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
-           a.show();
-       }
-        Button b = (Button) event.getSource();
-        Stage s = (Stage) b.getScene().getWindow();
-        s.close();
-        
-        
-        
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Información");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
+    
 
     @FXML
-    private void Anime(ActionEvent event) {
+    private void playRound(ActionEvent event) {
         
-
-
-        String input = textFieldNumQuestions.getText();
-        int numQuestions;
-
-        try {
-            // Intentar convertir el texto a un entero
-            numQuestions = Integer.parseInt(input);
-
-            // Verificar si el número es menor o igual a 0
+        round.setIsFinished(false);
+        int numQuestions = 0;
+        
+        try{
+            numQuestions = Integer.parseInt(textFieldNumQuestions.getText());
             if (numQuestions <= 0) {
-                showAlert("El número de preguntas debe ser mayor a 0");
-                return;
+                throw new InvalidNumQuestionsException("El número de preguntas debe ser mayor a 0");
             }
-
-            // Continuar con la lógica si el número es válido
-            Init(event, "Anime",numQuestions);
-            Button b = (Button) event.getSource();
-            Stage s = (Stage) b.getScene().getWindow();
-            s.close();
-        } catch (NumberFormatException e) {
-            // Si la conversión falla, mostrar un mensaje de error
-            showAlert("Por favor, ingrese un número válido.");
         }
-
-            System.out.println(Utility.loadanswers("respuestas.txt"));
-    
-    }
-
-    @FXML
-    private void Animals(ActionEvent event) {
+        catch (InvalidNumQuestionsException invalidNumQuestionsException) {
+            showAlert(invalidNumQuestionsException.getMessage());
+            return; // Exit the method early if validation fails
+        }
+        catch(NumberFormatException numberFormatException){
+            showAlert("Por favor, ingrese un numero valido");
+        }
+        
+        round.setNumQuestions(numQuestions);
+        Button b = (Button) event.getSource();
+        String subject = b.getText();
+        round.setSubject(subject);
+        round.changeQuestions();
+        
+        try{
+            App.setRoot("options");
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
         
     }
-
-    @FXML
-    private void SuperHeroe(ActionEvent event) {
-    }
-    
-    
-    
-    
-     
-    
-    
-
+ 
 }

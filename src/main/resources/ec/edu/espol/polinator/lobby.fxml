@@ -9,26 +9,26 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.polinator.ControladorController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.polinator.LobbyController">
    <center>
       <VBox fx:id="vpaneOptions" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="ButtonSubmit" mnemonicParsing="false" onAction="#Submit" prefHeight="25.0" prefWidth="100.0" text="SUBMIT FILE">
+            <Button fx:id="ButtonSubmit" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="SUBMIT FILE">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="ButtonAnime" mnemonicParsing="false" onAction="#Anime" prefHeight="25.0" prefWidth="98.0" text="ANIME">
+            <Button fx:id="ButtonAnime" mnemonicParsing="false" onAction="#playRound" prefHeight="25.0" prefWidth="98.0" text="Anime">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="ButtonAnimals" mnemonicParsing="false" onAction="#Animals" prefHeight="25.0" prefWidth="98.0" text="ANIMALES">
+            <Button fx:id="ButtonAnimals" mnemonicParsing="false" onAction="#playRound" prefHeight="25.0" prefWidth="98.0" text="Animals">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="buttonSuperHeroe" mnemonicParsing="false" onAction="#SuperHeroe" prefHeight="25.0" prefWidth="101.0" text="SUPERHEROES">
+            <Button fx:id="buttonSuperHeroe" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="SUPERHEROES">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>

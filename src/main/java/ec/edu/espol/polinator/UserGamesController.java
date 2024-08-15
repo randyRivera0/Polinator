@@ -50,10 +50,10 @@ public class UserGamesController implements Initializable {
         gamesContainer = new VBox(10); // VBox con 10px de espacio entre los botones
         gamesContainer.setStyle("-fx-padding: 20; -fx-alignment: center;"); // Centramos los botones
         BorderPane.setCenter(gamesContainer); // Colocar el VBox en el centro del BorderPane
-        displayGames();
+        // displayGames();
         // TODO
         
-    System.out.println(GameSet.getInstance().getGames().size());
+    // System.out.println(GameSet.getInstance().getGames().size());
     System.out.println(questions);
     }   
     
@@ -62,12 +62,12 @@ public class UserGamesController implements Initializable {
         this.questions = questions;
     }
     
-    
+    /*
      private void displayGames() {
         gamesContainer.getChildren().clear(); // Limpiar contenedor de juegos
 
-        for (Game game : GameSet.getInstance().getGames()) {
-            Button gameButton = new Button(game.getName());
+        for (Round game : GameSet.getInstance().getGames()) {
+            Button gameButton = new Button(game.getSubject());
             gameButton.setOnAction(e -> {
                 try {
                     startGame(game);
@@ -81,10 +81,12 @@ public class UserGamesController implements Initializable {
             gamesContainer.getChildren().add(gameButton);
         }
     }
+    */
      
-       private void startGame(Game game) throws IOException {
+     /*
+       private void startGame(Round game) throws IOException {
         
-        System.out.println("Iniciando: " + game.getName());
+        System.out.println("Iniciando: " + game.getSubject());
         System.out.println(game.getPreguntasFile().getName());
         List<String> s = Utility.loadanswers(game.getRespuestasFile().getAbsolutePath());
         System.out.println(s);
@@ -94,6 +96,7 @@ public class UserGamesController implements Initializable {
         
         
     }
+    */
        
        
 
@@ -129,7 +132,7 @@ public class UserGamesController implements Initializable {
            Scene sc = new Scene(fxml.load(), 850, 600);
            Stage st = new Stage();
            OptionsController controller = fxml.getController();
-           controller.initData(root, numQuestions, answ); // Pasar la referencia del Stage al controlador del juego
+           controller.setQuestionsText(); // Pasar la referencia del Stage al controlador del juego
            st.setScene(sc);
            st.show();
        } catch (IOException ex) {

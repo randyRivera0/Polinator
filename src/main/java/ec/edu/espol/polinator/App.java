@@ -7,14 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
-import java.util.Scanner;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 
 /**
  * JavaFX App
@@ -22,26 +14,17 @@ import javafx.scene.layout.Pane;
 public class App extends Application {
 
     private static Scene scene;
+    public static Round round = new Round();
     
 
     @Override
     public void start(Stage stage) throws IOException {
-         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Inicio.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("start.fxml"));
         Parent root = fxmlLoader.load();
         scene = new Scene(root, 680, 480);
-
-        // Agregar la imagen programáticamente
-        Image image = new Image(getClass().getResourceAsStream("/img/inicio.jpg"));
-        ImageView imageView = new ImageView(image);
-        imageView.setFitWidth(680);
-        imageView.setFitHeight(480);
-
-        // Asegúrate de que el rootPane esté bien definido
-        Pane rootPane = (Pane) scene.getRoot();
-        rootPane.getChildren().add(0, imageView); // Agregar imagen al fondo
-
         stage.setScene(scene);
         stage.show();
+        
     }   
 
     static void setRoot(String fxml) throws IOException {
@@ -56,23 +39,10 @@ public class App extends Application {
     public static void main(String[] args) {
         
         launch();
-        Node<String> node1 = cargarArchivoPreguntas();
-        cargarArchivoRespuestas(node1);
-                 
-        /*System.out.println("Piense un animal.");
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Numero de preguntas: ");
-        
-        int n;
-        
-        do{
-            n = sc.nextInt();
-        } while(n<0);
-        
-        preguntar(node1, n);*/
- 
     }
-        
+    
+    public void hideComments(){
+    /*
     public static boolean preguntar(Node root, int n){
         Scanner sc = new Scanner(System.in);
         boolean res;
@@ -152,5 +122,12 @@ public class App extends Application {
             e.printStackTrace();
         }
     }
+    */
+    }
 
+     
+    public static Round getRound() {
+        return round; 
+    }
+    
 }

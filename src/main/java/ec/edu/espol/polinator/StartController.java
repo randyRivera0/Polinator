@@ -4,14 +4,19 @@
  */
 package ec.edu.espol.polinator;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -19,35 +24,34 @@ import javafx.stage.Stage;
  *
  * @author PERSONAL
  */
-public class InicioController implements Initializable {
+public class StartController implements Initializable {
     Button buttton;
+    Round round;
 
+    @FXML
+    private Pane pane;
     /**
      * Initializes the controller class.
      */
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // Agregar la imagen programáticamente
+        Image image = new Image(getClass().getResourceAsStream("/img/inicio.jpg"));
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(680);
+        imageView.setFitHeight(480);
+        pane.getChildren().add(0, imageView); // Agregar imagen al fondo
+
     }    
     
     public void abrirPrimary(ActionEvent event) {
-        try {
-            // Cargar el archivo FXML para la ventana secundaria
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("primary_1.fxml"));
-            Parent root = loader.load();
-           
-            // Crear una nueva ventana
-            Stage stage = new Stage();
-            stage.setTitle("Principal");
-            stage.setScene(new Scene(root));
-            stage.show();
-            Stage s = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            s.close();
-        } catch (Exception e) {
+        try{
+            App.setRoot("lobby");
+        }
+        catch(IOException e){
             e.printStackTrace();
         }
     }
-
-    
+  
 }

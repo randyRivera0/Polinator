@@ -42,6 +42,7 @@ public class UsertxtController implements Initializable {
         // TODO
     }    
 
+    /*
     @FXML
     private void Crear(ActionEvent event) {
     if (preguntasFile != null && respuestasFile != null) {
@@ -60,6 +61,7 @@ public class UsertxtController implements Initializable {
                showAlert("Porfavor sube los dos archivos completos.");
            }
     }
+    */
 
     @FXML
     private void Preguntas(ActionEvent event) {

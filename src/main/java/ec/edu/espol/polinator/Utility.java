@@ -8,6 +8,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,4 +68,43 @@ public class Utility {
         return nombres;
 
     }
+    
+    
+    public static <E> Node<String> cargarArchivoPreguntas(String subject){
+             
+        Path path = Paths.get("questions" + subject + ".txt");
+        
+        try{
+            List<String> questions = Files.readAllLines(path);
+            Node<String> root = new Node(questions.get(0));
+            for(int i=1; i < questions.size(); i++){
+                String question = questions.get(i);
+                root.addChildrenQuestion(question);
+            }
+            
+            return root;
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        return null;
+        
+    }
+    
+    public static void cargarArchivoRespuestas(Node<String> root, String subject){
+        Path path = Paths.get("answers" + subject + ".txt");
+        
+        try{
+            List<String> questions = Files.readAllLines(path);
+            for(String question : questions){
+                root.addChildrenAnswer(question);
+            }
+            
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+    
 }
