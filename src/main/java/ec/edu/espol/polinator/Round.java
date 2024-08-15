@@ -8,15 +8,9 @@ package ec.edu.espol.polinator;
  *
  * @author leoza
  */
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 public class Round <E>{
     

@@ -62,41 +62,7 @@ public class Node<E>{
     public String toString() {
         return "Node{" + "data=" + data + '}';
     }
-    
-    public void addChildrenQuestion1(String question){
-       // List<Node<E>> childrenNodes = childrenNodesList();
-        //for (Node<E> node : childrenNodes){
-        if(this.isLeaf()){
-            this.left = new Node(question);
-            this.right = new Node(question);
-        }
-        else{
-            this.left.addChildrenQuestion1(question);
-            this.right.addChildrenQuestion1(question);
-            
-        }
-        //}
-    }
-    /*
-    public void addChildrenQuestion(String question){
-        if(this==null){
-            return;
-        }
-        
-        Queue<Node<E>> queue = new LinkedList<>();
-        queue.add(this);
-        
-        while(!queue.isEmpty()){
-            int levelSize = queue.size();
-            
-            for(int i=0; i < levelSize; i++){
-                Node<E> node = queue.poll();
-                node.addQuestion(question);
-            }
-        }
-            
-    }
-    */
+      
     
     public void addChildrenQuestion(String question) {
         String[] tokens = question.split(";");
@@ -127,9 +93,8 @@ public class Node<E>{
         else{
             current.right = new Node(answer);
         }
-        
-        
     }
+    
     
     public void addQuestion(String question){
         Node<String> node = new Node(question);
@@ -163,9 +128,6 @@ public class Node<E>{
         else{
             current.right = new Node(answer);
         }
-        
-        
     }
-
 
 }
