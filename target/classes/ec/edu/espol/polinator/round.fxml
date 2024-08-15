@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.polinator.RoundController">
+   <center>
+      <VBox fx:id="vpaneCentral" alignment="CENTER" prefHeight="249.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fx:id="textQuestion" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox fx:id="hpaneBottom" alignment="CENTER" prefHeight="56.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="ButtonSi" mnemonicParsing="false" onAction="#buttonTurn" text="SI" />
+            <VBox prefHeight="200.0" prefWidth="100.0" />
+            <Button fx:id="ButtonNo" mnemonicParsing="false" onAction="#buttonTurn" text="NO" />
+         </children>
+      </HBox>
+   </bottom>
+   <top>
+      <HBox fx:id="hpaneTop" alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="77.0" prefWidth="247.0">
+               <children>
+                  <Button fx:id="buttonPrevScene" mnemonicParsing="false" onAction="#prevScene" text="RETURN" />
+               </children>
+            </HBox>
+            <Label fx:id="textResult" prefHeight="77.0" prefWidth="450.0" textAlignment="CENTER">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="12.0" />
+               </font></Label>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
