@@ -5,28 +5,31 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.polinator.UsertxtController">
    <bottom>
-      <HBox alignment="CENTER" prefHeight="67.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="Hbuttom" alignment="CENTER" prefHeight="80.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#Crear" text="CREATE" />
+            <Button mnemonicParsing="false" onAction="#Crear" prefHeight="33.0" prefWidth="87.0" text="CREATE" />
          </children>
       </HBox>
    </bottom>
    <center>
-      <HBox alignment="CENTER" prefHeight="323.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="Hcenter" alignment="CENTER" prefHeight="323.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#Preguntas" text="PREGUNTAS" />
-            <Button mnemonicParsing="false" onAction="#Respuestas" text="RESPUESTAS">
+            <Button mnemonicParsing="false" onAction="#Preguntas" prefHeight="59.0" prefWidth="148.0" text="PREGUNTAS" />
+            <Button mnemonicParsing="false" onAction="#Respuestas" prefHeight="58.0" prefWidth="153.0" text="RESPUESTAS">
                <HBox.margin>
-                  <Insets left="100.0" />
+                  <Insets left="50.0" />
                </HBox.margin>
             </Button>
          </children>
       </HBox>
    </center>
    <top>
-      <Button mnemonicParsing="false" onAction="#Return" text="RETURN" BorderPane.alignment="CENTER" />
+      <HBox fx:id="Htop" alignment="CENTER" prefHeight="77.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#Return" prefHeight="33.0" prefWidth="90.0" text="RETURN" />
+         </children>
+      </HBox>
    </top>
 </BorderPane>

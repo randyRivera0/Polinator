@@ -28,7 +28,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="buttonSuperHeroe" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="SUPERHEROES">
+            <Button fx:id="buttonSuperHeroes" mnemonicParsing="false" onAction="#playRound" prefHeight="25.0" prefWidth="101.0" text="SuperHeroes">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>

@@ -1,0 +1,16 @@
+BlackCanary no no no no
+EmmaFrost no no no si
+Nebula no no si no
+StarFire no no si si
+Elektra no si no no
+CatWoman no si no si
+SheHulk no si si no
+WonderWoman no si si si
+Beast si no no no
+Deadpool si no no si
+Superman si no si no
+GreenLantern si no si si
+Aquaman si si no no
+Thor si si no si
+He-Man si si si no
+CaptainBritain si si si si

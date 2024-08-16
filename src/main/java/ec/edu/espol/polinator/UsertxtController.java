@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -31,6 +32,12 @@ public class UsertxtController implements Initializable {
     private File respuestasFile;
     private List<GameSet> gameSets = new ArrayList<>();
     private int gameCount = 0;
+    @FXML
+    private HBox Htop;
+    @FXML
+    private HBox Hbuttom;
+    @FXML
+    private HBox Hcenter;
 
 
     /**
@@ -38,8 +45,9 @@ public class UsertxtController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        // TODO
+        Hbuttom.setStyle("-fx-background-color: #CCD5AE;");
+        Htop.setStyle("-fx-background-color: #CCD5AE;");
+        Hcenter.setStyle("-fx-background-color: #E0E5B6;");
     }    
 
     /*
@@ -99,7 +107,7 @@ public class UsertxtController implements Initializable {
     
     @FXML
     private void Return(ActionEvent event) {
-        Abrir("primary_1");
+        Abrir("lobby");
                 Button b = (Button) event.getSource();
         Stage s = (Stage) b.getScene().getWindow();
         s.close();
@@ -114,4 +122,8 @@ public class UsertxtController implements Initializable {
             alert.setContentText(message);
             alert.showAndWait();
         }
+
+    @FXML
+    private void Crear(ActionEvent event) {
+    }
 }

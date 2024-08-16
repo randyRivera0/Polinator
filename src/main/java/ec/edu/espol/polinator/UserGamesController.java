@@ -15,11 +15,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -32,15 +37,21 @@ public class UserGamesController implements Initializable {
 
     @FXML
     private BorderPane BorderPane;
-    @FXML
-    private Label label;
-    @FXML
-    private Label lab;
     private VBox gamesContainer;
     
     private int questions;
     
     private Node<String> root;
+    @FXML
+    private HBox Htop;
+    @FXML
+    private VBox hleft;
+    @FXML
+    private HBox Hbuttom;
+    @FXML
+    private VBox Vcenter;
+    @FXML
+    private VBox hright;
 
     /**
      * Initializes the controller class.
@@ -52,9 +63,28 @@ public class UserGamesController implements Initializable {
         BorderPane.setCenter(gamesContainer); // Colocar el VBox en el centro del BorderPane
         // displayGames();
         // TODO
+        Hbuttom.setStyle("-fx-background-color: #CCD5AE;");
+        Htop.setStyle("-fx-background-color: #CCD5AE;");
+        hleft.setStyle("-fx-background-color: #E0E5B6;");
         
-    // System.out.println(GameSet.getInstance().getGames().size());
-    System.out.println(questions);
+        hright.setStyle("-fx-background-color: #E0E5B6;");
+        
+        
+        
+        Image image = new Image(getClass().getResourceAsStream("/img/games.gif"));
+            ImageView imv = new ImageView(image);
+            imv.setFitWidth(150);
+            imv.setFitHeight(150);
+            VBox vbox = new VBox();
+            vbox.setSpacing(5);
+            vbox.setPadding(new Insets(10)); 
+            vbox.getChildren().add(imv);
+            vbox.setAlignment(Pos.CENTER);
+            vbox.setFillWidth(true);
+
+            hright.getChildren().add(vbox);
+            
+  
     }   
     
     
@@ -118,7 +148,7 @@ public class UserGamesController implements Initializable {
      
     @FXML
     private void Return(ActionEvent event) {
-        Abrir("primary_1");
+        Abrir("lobby");
         Button b = (Button) event.getSource();
         Stage s = (Stage) b.getScene().getWindow();
         s.close();

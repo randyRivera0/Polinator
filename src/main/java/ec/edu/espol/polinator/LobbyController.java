@@ -52,6 +52,14 @@ public class LobbyController implements Initializable {
     private HBox hpaneLabel;
     
     public Round round;
+    @FXML
+    private Button ButtonSubmit;
+    @FXML
+    private Button ButtonAnime;
+    @FXML
+    private Button ButtonAnimals;
+    @FXML
+    private Button buttonSuperHeroes;
 
  
     /**
