@@ -1,7 +1,7 @@
-Es este personaje de AOT?
-Es este personaje de SpyXFamily?;0
-Ha poseido titanes?;1
-Es un personaje de Avatar?;0;0
-Es una niña?;0;1
-Es un Ackerman?;1;0
-Ha poseido muchos titanes?;1;1
+¿Es un ser humano?
+¿Es un robot?;0
+¿Tiene habilidades especiales?;1
+¿Es un pato?;0;0
+Es azul?;0;1
+¿Viene de pueblo Paleta?;1;0
+¿Se puede convertir en titan?;1;1

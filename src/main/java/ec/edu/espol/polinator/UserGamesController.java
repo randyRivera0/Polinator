@@ -137,7 +137,6 @@ public class UserGamesController implements Initializable {
                 s.close();*/
                 System.out.println(round.numQuestions);
                 round.setIsFinished(false);
-                round.setNumQuestions(90);
                 String subject = gameButton.getText();
                 round.setSubject(subject);
                 round.tree=new TreeNodeDecision(game);
