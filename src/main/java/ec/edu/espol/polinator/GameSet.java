@@ -15,7 +15,7 @@ import java.util.List;
 public class GameSet {
     
     private static GameSet instance;
-    private List<Round> rounds;
+    private List<Node> rounds;
 
     private GameSet() {
         rounds = new ArrayList<>();
@@ -31,11 +31,11 @@ public class GameSet {
     }
     
 
-    public void addGame(Round round) {
+    public void addGame(Node round) {
         rounds.add(round);
     }
 
-    public List<Round> getGames() {
+    public List<Node> getGames() {
         return rounds;
     }
 }

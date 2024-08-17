@@ -138,6 +138,17 @@ public class LobbyController implements Initializable {
    
         
     }
+
+    @FXML
+    private void submit(ActionEvent event) {
+        
+        try{
+            App.setRoot("usertxt");
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
  
     
     class HiloFlashHBox extends Thread {
@@ -174,6 +185,7 @@ public class LobbyController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+        
     }
     
 
@@ -185,16 +197,20 @@ public class LobbyController implements Initializable {
         
         try{
             numQuestions = Integer.parseInt(textFieldNumQuestions.getText());
-            if (numQuestions <= 0) {
-                throw new InvalidNumQuestionsException("El número de preguntas debe ser mayor a 0");
+            if (numQuestions <= 0 ) {
+                showAlert("Por favor, ingrese un numero mayor a 0 ");
+                return;
+                //throw new InvalidNumQuestionsException("El número de preguntas debe ser mayor a 0");
+                
             }
         }
-        catch (InvalidNumQuestionsException invalidNumQuestionsException) {
+        /*catch (InvalidNumQuestionsException invalidNumQuestionsException) {
             showAlert(invalidNumQuestionsException.getMessage());
             return; // Exit the method early if validation fails
-        }
+        }*/
         catch(NumberFormatException numberFormatException){
             showAlert("Por favor, ingrese un numero valido");
+            return;
         }
         
         round.setNumQuestions(numQuestions);

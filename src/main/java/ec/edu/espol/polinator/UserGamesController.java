@@ -52,16 +52,21 @@ public class UserGamesController implements Initializable {
     private VBox Vcenter;
     @FXML
     private VBox hright;
-
+    
+    public Round round;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        this.round = App.getRound();
+        
+        
         gamesContainer = new VBox(10); // VBox con 10px de espacio entre los botones
         gamesContainer.setStyle("-fx-padding: 20; -fx-alignment: center;"); // Centramos los botones
         BorderPane.setCenter(gamesContainer); // Colocar el VBox en el centro del BorderPane
-        // displayGames();
+        displayGames();
         // TODO
         Hbuttom.setStyle("-fx-background-color: #CCD5AE;");
         Htop.setStyle("-fx-background-color: #CCD5AE;");
@@ -92,14 +97,19 @@ public class UserGamesController implements Initializable {
         this.questions = questions;
     }
     
-    /*
+    
      private void displayGames() {
-        gamesContainer.getChildren().clear(); // Limpiar contenedor de juegos
+         
+        int count=0;
+        //gamesContainer.getChildren().clear(); // Limpiar contenedor de juegos
 
-        for (Round game : GameSet.getInstance().getGames()) {
+        /*for (Round game : GameSet.getInstance().getGames()) {
+            game.setNumQuestions(30);
             Button gameButton = new Button(game.getSubject());
             gameButton.setOnAction(e -> {
                 try {
+                    
+                    App.round=game;
                     startGame(game);
                     Button b = (Button) e.getSource();
                     Stage s = (Stage) b.getScene().getWindow();
@@ -108,25 +118,67 @@ public class UserGamesController implements Initializable {
                     ex.printStackTrace();
                 }
             });
+            Vcenter.getChildren().add(gameButton);
+        }*/
+        
+        gamesContainer.getChildren().clear(); // Limpiar contenedor de juegos
+
+        for (Node game : GameSet.getInstance().getGames()) {
+            System.out.println(game.data);
+            System.out.println(game.left);
+            Button gameButton = new Button("Game :"+(count+=1));
+            gameButton.setOnAction(e -> {
+                try {
+                    //startGame(game);
+                    
+                    /*Button b = (Button) e.getSource();
+                    Stage s = (Stage) b.getScene().getWindow();
+                    s.close();*/
+                    round.setIsFinished(false);
+                    round.setNumQuestions(90);
+                   
+                    String subject = gameButton.getText();
+                    round.setSubject(subject);
+
+    
+                    round.tree=new TreeNodeDecision(game);
+                    
+                    App.setRoot("Options");
+        
+        
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            });
             gamesContainer.getChildren().add(gameButton);
         }
     }
-    */
+    
      
-     /*
-       private void startGame(Round game) throws IOException {
+    
+       private void startGame(Node game) throws IOException {
         
-        System.out.println("Iniciando: " + game.getSubject());
+        /*System.out.println("Iniciando: " + game.getSubject());
         System.out.println(game.getPreguntasFile().getName());
         List<String> s = Utility.loadanswers(game.getRespuestasFile().getAbsolutePath());
         System.out.println(s);
         
-        Init(game.getPreguntasFile().getCanonicalPath() , game.getRespuestasFile().getAbsolutePath() , questions  );
+        
+        Init(game.getPreguntasFile().getCanonicalPath() , game.getRespuestasFile().getAbsolutePath() , questions  );*/
+        
+        round.setNumQuestions(90);
+        round.setIsFinished(false);
+        //Round<String> round = newRound<>();
+        // Generar el nuevo nombre para los archivos
+       //String name="Game " + (GameSet.getInstance().getGames().size() + 1);
+       //round.setSubject(name);
+       round.tree=new TreeNodeDecision(game);
+        
     
         
         
     }
-    */
+    
        
        
 
@@ -155,7 +207,7 @@ public class UserGamesController implements Initializable {
     }
 
    
-     public void OpenWindow(Node<String> root, int numQuestions, List<String> answ){
+   /*public void OpenWindow(Node<String> root, int numQuestions, List<String> answ){
 
             try {
            FXMLLoader fxml = App.loadFXML("Options");
@@ -217,5 +269,5 @@ public class UserGamesController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }

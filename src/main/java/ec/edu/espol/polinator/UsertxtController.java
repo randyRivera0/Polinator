@@ -28,7 +28,7 @@ import javafx.stage.Stage;
  */
 public class UsertxtController implements Initializable {
     
-       private File preguntasFile;
+    private File preguntasFile;
     private File respuestasFile;
     private List<GameSet> gameSets = new ArrayList<>();
     private int gameCount = 0;
@@ -38,6 +38,7 @@ public class UsertxtController implements Initializable {
     private HBox Hbuttom;
     @FXML
     private HBox Hcenter;
+    public Round round;
 
 
     /**
@@ -45,6 +46,7 @@ public class UsertxtController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        this.round = App.getRound();
         Hbuttom.setStyle("-fx-background-color: #CCD5AE;");
         Htop.setStyle("-fx-background-color: #CCD5AE;");
         Hcenter.setStyle("-fx-background-color: #E0E5B6;");
@@ -90,27 +92,17 @@ public class UsertxtController implements Initializable {
     }
 
     
-    public void Abrir(String ruta){
 
-          try {
-           FXMLLoader fxml = App.loadFXML(ruta);
-           Scene sc = new Scene(fxml.load(), 850, 600);
-           Stage st = new Stage();
-
-           st.setScene(sc);
-           st.show();
-       } catch (IOException ex) {
-           Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
-           a.show();
-       }
-    }
     
     @FXML
     private void Return(ActionEvent event) {
-        Abrir("lobby");
-                Button b = (Button) event.getSource();
-        Stage s = (Stage) b.getScene().getWindow();
-        s.close();
+        try{
+            App.setRoot("lobby");
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        
         
     }
     
@@ -125,5 +117,43 @@ public class UsertxtController implements Initializable {
 
     @FXML
     private void Crear(ActionEvent event) {
+        
+        System.out.println(GameSet.getInstance().getGames().size());
+        
+       if (preguntasFile != null && respuestasFile != null) {
+           
+        //round.setIsFinished(false);
+        //Round<String> round = newRound<>();
+        // Generar el nuevo nombre para los archivos
+       //String name="Game " + (GameSet.getInstance().getGames().size() + 1);
+       //round.setSubject(name);
+       //round.tree=new TreeNodeDecision(node);
+       System.out.println(preguntasFile.getAbsolutePath());
+       System.out.println(respuestasFile.getAbsolutePath());
+       
+       Node<String> node= Utility.cargarArchivoPreguntasUser(preguntasFile.getAbsolutePath());
+       Utility.cargarArchivoRespuestasUser(node , respuestasFile.getAbsolutePath());
+       
+        GameSet.getInstance().addGame(node);
+
+        // Resetear archivos para la siguiente creación de juego
+        preguntasFile = null;
+        respuestasFile = null;
+        System.out.println(GameSet.getInstance().getGames().size());
+
+    } else {
+        showAlert("Por favor sube los dos archivos completos.");
+        return;
+    }
+        
+         try{
+            App.setRoot("lobby");
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        
+        
     }
 }

@@ -107,4 +107,41 @@ public class Utility {
         }
     }
     
+    public static <E> Node<String> cargarArchivoPreguntasUser(String subject){
+             
+        Path path = Paths.get( subject );
+        
+        try{
+            List<String> questions = Files.readAllLines(path);
+            Node<String> root = new Node(questions.get(0));
+            for(int i=1; i < questions.size(); i++){
+                String question = questions.get(i);
+                root.addChildrenQuestion(question);
+            }
+            
+            return root;
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        return null;
+        
+    }
+    
+    public static void cargarArchivoRespuestasUser(Node<String> root, String subject){
+        Path path = Paths.get(subject);
+        
+        try{
+            List<String> questions = Files.readAllLines(path);
+            for(String question : questions){
+                root.addChildrenAnswer(question);
+            }
+            
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+    
 }
