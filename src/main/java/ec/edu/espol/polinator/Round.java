@@ -11,6 +11,12 @@ package ec.edu.espol.polinator;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 
 public class Round <E>{
     
@@ -82,12 +88,13 @@ public class Round <E>{
             }
             
             else if (numQuestions>0){
+                //numQuestions -= 1;
                 IteratorTreeNode it = tree.iterator();
 
                 Node<E> node = it.getNext(decision);
-                
+                //numQuestions--;
                 if(node==null){
-                    //showAlert("No existe ningún animal que coincida con las respuestas provistas.");
+                //showAlert("No existe ningún animal que coincida con las respuestas provistas.");
                 controller.setQuestion("");
                 controller.CargarGif("img/sad.gif");
 
@@ -97,6 +104,7 @@ public class Round <E>{
 
                 return;
                 }
+               
                 else if(node.isLeaf()){
                     controller.setQuestion("");
                     System.out.println(getClass().getResource("/img/" + (String) node.getData() + ".jpg"));
@@ -107,23 +115,42 @@ public class Round <E>{
                     isFinished = true;
                 }
                 else{ // preguntar normal
-                    // numQuestions -= 1;
+                    //numQuestions -= 1;
                     // Si las preguntas restantes son 0 después de decrementar, mostramos alerta
+                    
                     if (numQuestions == 1) {
-                        controller.setQuestion("");
-                        controller.CargarGif("img/"+"surprise"+".gif");
-                        /*
-                        List<Node<String>> possibleNodes = currentNode.childrenNodesList();
-                        StringBuilder nodesText = new StringBuilder("POSIBLEMENTE SEA "+"\n"+"UNO DE ESTOS:\n");
+                        
+                        List<Node<E>> possibleNodes = node.childrenNodesList();
+                        System.out.println(possibleNodes);
+                        StringBuilder nodesText = new StringBuilder("POSIBLEMENTE SEA "+"UNO DE ESTOS:\n");
 
-                          for (Node<String> node : possibleNodes) {
+                        for (Node<E> n : possibleNodes) {
 
-                              nodesText.append(" - ").append(node.data).append("\n");
+                              nodesText.append(" - ").append(n.data).append("\n");
 
                           }
-
-
+                        
+                        
+                        //controller.setResult(nodesText.toString());
+                        //controller.setQuestion("");
+                        controller.CargarGif("img/"+"surprise"+".gif");
                         VBox v= new VBox();
+                        v.setStyle("-fx-background-color: #E0E5B6;");
+                        Label a= new Label();
+                        a.setTextAlignment(TextAlignment.CENTER);
+                        a.setFont(new Font("Bookman Old Style", 24)); 
+                        a.setText(nodesText.toString());
+                        StackPane root = new StackPane();
+                        root.getChildren().add(a);
+                        v.getChildren().add(root);
+                        v.setAlignment(Pos.CENTER);
+                        v.setFillWidth(true);
+                        controller.vpaneCentral.getChildren().add(v);
+                        controller.buttonYesVisible=false;
+                        controller.buttonNoVisible=false;
+
+
+                        /*VBox v= new VBox();
                         v.setStyle("-fx-background-color: #E0E5B6;");
                         Label a= new Label();
                         a.setTextAlignment(TextAlignment.CENTER);
@@ -137,8 +164,8 @@ public class Round <E>{
                         v.setAlignment(Pos.CENTER);
                         v.setFillWidth(true);
                         borderPane.setLeft(v);
-                        return;
-    `               */
+                        return;*/
+                   
                     } 
                     else {
                             //updateQuestion();
@@ -149,7 +176,7 @@ public class Round <E>{
                 }
 
             }
-            
+           numQuestions -= 1; 
         }
  
     }

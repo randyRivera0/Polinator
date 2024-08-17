@@ -44,15 +44,13 @@ public class RoundController implements Initializable {
     @FXML
     private Button buttonPrevScene;
     @FXML
-    private VBox vpaneCentral;
+    public VBox vpaneCentral;
     @FXML
     private HBox hpaneTop;
     @FXML
     private HBox hpaneBottom;
     @FXML
     private BorderPane borderPane;
-    @FXML
-    private TextArea text;
     
     private Round round;
     public String question;

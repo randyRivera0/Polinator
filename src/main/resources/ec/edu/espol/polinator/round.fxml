@@ -31,7 +31,7 @@
    <top>
       <HBox fx:id="hpaneTop" alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="77.0" prefWidth="247.0">
+            <HBox alignment="CENTER" prefHeight="77.0" prefWidth="142.0">
                <children>
                   <Button fx:id="buttonPrevScene" mnemonicParsing="false" onAction="#prevScene" text="RETURN" />
                </children>
