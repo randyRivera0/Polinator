@@ -9,9 +9,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,6 +24,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -123,8 +126,8 @@ public class RoundController implements Initializable {
             ImageView imvError = new ImageView(errorImage);
 
             // Configurar las propiedades del GIF
-            imvError.setFitWidth(550);
-            imvError.setFitHeight(550);
+            imvError.setFitWidth(250);
+            imvError.setFitHeight(250);
 
             // Crear un VBox y agregar el GIF
             VBox vboxError = new VBox();
@@ -156,12 +159,16 @@ public class RoundController implements Initializable {
     
     @FXML
     private void prevScene(ActionEvent event) {
-        try {
+        /*try {
             App.setRoot("lobby");
         } catch (IOException ex) {
             Alert a = new Alert(Alert.AlertType.ERROR,"No se pudo abrir el fxml");
             a.show();
-        }
+        }*/
+        Abrir("lobby");
+        Button b = (Button) event.getSource();
+        Stage s = (Stage) b.getScene().getWindow();
+        s.close();
     }
 
     public void setQuestion(String question) {
@@ -172,4 +179,19 @@ public class RoundController implements Initializable {
         this.result = result;
     }
 
+     public void Abrir(String ruta){
+
+          try {
+           FXMLLoader fxml = App.loadFXML(ruta);
+           Scene sc = new Scene(fxml.load(), 680, 480);
+           Stage st = new Stage();
+
+           st.setScene(sc);
+           st.show();
+       } catch (IOException ex) {
+           Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
+           a.show();
+       }
+    }
+    
 }

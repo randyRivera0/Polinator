@@ -113,9 +113,10 @@ public class LobbyController implements Initializable {
                 showAlert("El número de preguntas debe ser mayor a 0");
                 return;
             }
-            try {
+            try {   
+               round.setNumQuestions(numQuestions); 
                FXMLLoader fxml = App.loadFXML("UserGames");
-               Scene sc = new Scene(fxml.load(), 850, 600);
+               Scene sc = new Scene(fxml.load(), 680, 480);
                Stage st = new Stage();
                UserGamesController controller = fxml.getController();
               controller.setQuestions(numQuestions);
@@ -142,12 +143,10 @@ public class LobbyController implements Initializable {
     @FXML
     private void submit(ActionEvent event) {
         
-        try{
-            App.setRoot("usertxt");
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
+        Abrir("Usertxt");
+                Button b = (Button) event.getSource();
+        Stage s = (Stage) b.getScene().getWindow();
+        s.close();
     }
  
     
@@ -219,13 +218,34 @@ public class LobbyController implements Initializable {
         round.setSubject(subject);
         round.changeQuestions();
         
-        try{
+        /*try{
             App.setRoot("options");
         }
         catch(IOException e){
             e.printStackTrace();
-        }
+        }*/
         
+        Abrir("Options");
+        
+        Stage s = (Stage) b.getScene().getWindow();
+        s.close();
+        
+    }
+    
+    
+     public void Abrir(String ruta){
+
+          try {
+           FXMLLoader fxml = App.loadFXML(ruta);
+           Scene sc = new Scene(fxml.load(), 680, 480);
+           Stage st = new Stage();
+
+           st.setScene(sc);
+           st.show();
+       } catch (IOException ex) {
+           Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
+           a.show();
+       }
     }
  
 }

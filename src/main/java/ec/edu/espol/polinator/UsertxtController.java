@@ -96,12 +96,10 @@ public class UsertxtController implements Initializable {
     
     @FXML
     private void Return(ActionEvent event) {
-        try{
-            App.setRoot("lobby");
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
+        Abrir("lobby");
+        Button b = (Button) event.getSource();
+        Stage s = (Stage) b.getScene().getWindow();
+        s.close();
         
         
     }
@@ -146,14 +144,29 @@ public class UsertxtController implements Initializable {
         return;
     }
         
-         try{
-            App.setRoot("lobby");
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
+    Abrir("lobby");
+            Button b = (Button) event.getSource();
+        Stage s = (Stage) b.getScene().getWindow();
+        s.close();
         
         
         
+    }
+    
+    
+    
+     public void Abrir(String ruta){
+
+          try {
+           FXMLLoader fxml = App.loadFXML(ruta);
+           Scene sc = new Scene(fxml.load(), 680, 480);
+           Stage st = new Stage();
+
+           st.setScene(sc);
+           st.show();
+       } catch (IOException ex) {
+           Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
+           a.show();
+       }
     }
 }

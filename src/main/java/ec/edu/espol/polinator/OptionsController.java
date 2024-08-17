@@ -61,6 +61,20 @@ public class OptionsController implements Initializable {
         
         setQuestionsText();
         
+        textAreaOptions.setEditable(false); // No permite edición
+        textAreaOptions.setStyle(
+            "-fx-background-color: #F5F5DC;" +   // Fondo beige
+            "-fx-font-size: 20px;" +             // Tamaño de letra
+            "-fx-font-family: 'Arial';" +        // Tipo de letra
+            "-fx-text-fill: #000080;" +          // Color del texto
+            //"-fx-border-color: #8B4513;" +       // Color del borde
+            "-fx-border-width: 2px;" +           // Ancho del borde
+            "-fx-text-alignment: center;" +      // Centrando el texto horizontalmente
+            "-fx-alignment: center;"  );
+        
+        textAreaOptions.setWrapText(true); // Para que el texto se ajuste al tamaño
+        textAreaOptions.setPrefColumnCount(1); // Ajustar para un ancho adecuado
+
         hpaneBottom.setStyle("-fx-background-color: #FAEDCE;"); 
         hpaneTop.setStyle("-fx-background-color: #FAEDCE;");  // Esto aplica un color de fondo azul claro
         vpaneLeft.setStyle("-fx-background-color: #FAEDCE;");
@@ -79,24 +93,32 @@ public class OptionsController implements Initializable {
      
     @FXML
     public void AbrirVentana(ActionEvent event) {
-       try {
+       /*try {
             App.setRoot("round");
         } 
         catch (IOException ex) {
             Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
             a.show();
-        }
+        }*/
+       Abrir("round");
+       Button b = (Button) event.getSource();
+       Stage s = (Stage) b.getScene().getWindow();
+       s.close();
     }
 
 
     @FXML
     private void prevScene(ActionEvent event) {
-         try {
+        /*try {
             App.setRoot("lobby");
         } catch (IOException ex) {
             Alert a = new Alert(Alert.AlertType.ERROR,"No se pudo abrir el fxml");
             a.show();
-        }
+        }*/
+        Abrir("lobby");
+        Button b = (Button) event.getSource();
+        Stage s = (Stage) b.getScene().getWindow();
+        s.close();
         
         
     }
@@ -121,5 +143,22 @@ public class OptionsController implements Initializable {
         s.close();
      
     }
+    
+    
+     public void Abrir(String ruta){
+
+          try {
+           FXMLLoader fxml = App.loadFXML(ruta);
+           Scene sc = new Scene(fxml.load(), 680, 480);
+           Stage st = new Stage();
+
+           st.setScene(sc);
+           st.show();
+       } catch (IOException ex) {
+           Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
+           a.show();
+       }
+    }
+    
      
 }

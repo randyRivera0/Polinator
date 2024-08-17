@@ -55,6 +55,8 @@ public class UserGamesController implements Initializable {
     
     public Round round;
     
+    public int numQuestions;
+    
     /**
      * Initializes the controller class.
      */
@@ -128,27 +130,21 @@ public class UserGamesController implements Initializable {
             System.out.println(game.left);
             Button gameButton = new Button("Game :"+(count+=1));
             gameButton.setOnAction(e -> {
-                try {
-                    //startGame(game);
-                    
-                    /*Button b = (Button) e.getSource();
-                    Stage s = (Stage) b.getScene().getWindow();
-                    s.close();*/
-                    round.setIsFinished(false);
-                    round.setNumQuestions(90);
-                   
-                    String subject = gameButton.getText();
-                    round.setSubject(subject);
-
-    
-                    round.tree=new TreeNodeDecision(game);
-                    
-                    App.setRoot("Options");
-        
-        
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+                //startGame(game);
+                
+                /*Button b = (Button) e.getSource();
+                Stage s = (Stage) b.getScene().getWindow();
+                s.close();*/
+                System.out.println(round.numQuestions);
+                round.setIsFinished(false);
+                round.setNumQuestions(90);
+                String subject = gameButton.getText();
+                round.setSubject(subject);
+                round.tree=new TreeNodeDecision(game);
+                Abrir("Options");
+                Button b = (Button) e.getSource();
+                Stage s = (Stage) b.getScene().getWindow();
+                s.close();
             });
             gamesContainer.getChildren().add(gameButton);
         }
@@ -156,17 +152,10 @@ public class UserGamesController implements Initializable {
     
      
     
-       private void startGame(Node game) throws IOException {
-        
-        /*System.out.println("Iniciando: " + game.getSubject());
-        System.out.println(game.getPreguntasFile().getName());
-        List<String> s = Utility.loadanswers(game.getRespuestasFile().getAbsolutePath());
-        System.out.println(s);
+    private void startGame(Node game) throws IOException {
         
         
-        Init(game.getPreguntasFile().getCanonicalPath() , game.getRespuestasFile().getAbsolutePath() , questions  );*/
-        
-        round.setNumQuestions(90);
+        //round.setNumQuestions(90);
         round.setIsFinished(false);
         //Round<String> round = newRound<>();
         // Generar el nuevo nombre para los archivos
@@ -182,11 +171,11 @@ public class UserGamesController implements Initializable {
        
        
 
-       public void Abrir(String ruta){
+    public void Abrir(String ruta){
 
           try {
            FXMLLoader fxml = App.loadFXML(ruta);
-           Scene sc = new Scene(fxml.load(), 850, 600);
+           Scene sc = new Scene(fxml.load(), 680, 480);
            Stage st = new Stage();
 
            st.setScene(sc);
