@@ -91,8 +91,41 @@ public class OptionsController implements Initializable {
         central.setVgap(10);
         central.setPadding(new Insets(10));
         
-        for (String name : namesList) {
-            Image image = new Image(getClass().getResourceAsStream("/img/"+name +".jpg"));
+        /*for (String name : namesList) {
+                   try {
+            Image image = new Image(getClass().getResourceAsStream("/img/" + name + ".jpg"));
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(100);  
+            imageView.setPreserveRatio(true); 
+
+            VBox vbox = new VBox(10); 
+            vbox.setAlignment(Pos.CENTER);
+            Label nameLabel = new Label(name);
+            nameLabel.setAlignment(Pos.CENTER); 
+            nameLabel.setFont(Font.font("Arial", javafx.scene.text.FontWeight.BOLD, 12)); 
+            nameLabel.setWrapText(true);
+            vbox.getChildren().addAll(imageView, nameLabel);
+
+            central.getChildren().add(vbox);
+        } catch (Exception e) {
+           
+            VBox vbox = new VBox(10); 
+            vbox.setAlignment(Pos.CENTER);
+            Label nameLabel = new Label(name+ " - ");
+            nameLabel.setAlignment(Pos.CENTER); 
+            nameLabel.setFont(Font.font("Arial", javafx.scene.text.FontWeight.BOLD, 50)); 
+            nameLabel.setWrapText(true);
+            vbox.getChildren().addAll(nameLabel);
+
+            central.getChildren().add(vbox);
+        }
+        }*/
+        
+        
+        for (int i = 0; i < namesList.size(); i++) {
+            String name = namesList.get(i);
+            try {
+                Image image = new Image(getClass().getResourceAsStream("/img/" + name + ".jpg"));
                 ImageView imageView = new ImageView(image);
                 imageView.setFitWidth(100);  
                 imageView.setPreserveRatio(true); 
@@ -106,7 +139,24 @@ public class OptionsController implements Initializable {
                 vbox.getChildren().addAll(imageView, nameLabel);
 
                 central.getChildren().add(vbox);
+            } catch (Exception e) {
+                VBox vbox = new VBox(10); 
+                vbox.setAlignment(Pos.CENTER);
+
+                // Si no es el último elemento, añadir el guion
+                String displayName = (i < namesList.size() - 1) ? name + " -" : name;
+
+                Label nameLabel = new Label(displayName);
+                nameLabel.setAlignment(Pos.CENTER); 
+                nameLabel.setFont(Font.font("Arial", javafx.scene.text.FontWeight.BOLD, 50)); 
+                nameLabel.setWrapText(true);
+                vbox.getChildren().addAll(nameLabel);
+
+                central.getChildren().add(vbox);
+            }
         }
+        
+        
         sp.setFitToWidth(true);
         sp.setContent(central);
 
