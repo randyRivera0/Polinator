@@ -4,32 +4,71 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.polinator.UsertxtController">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.polinator.UsertxtController">
    <bottom>
       <HBox fx:id="Hbuttom" alignment="CENTER" prefHeight="80.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#Crear" prefHeight="33.0" prefWidth="87.0" text="CREATE" />
+            <Button mnemonicParsing="false" onAction="#Crear" prefHeight="55.0" prefWidth="219.0" style="-fx-background-color: #974336;" text="CLICK PARA JUGAR" textFill="WHITE">
+               <font>
+                  <Font name="Ravie" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="30.0" />
+               </HBox.margin></Button>
          </children>
       </HBox>
    </bottom>
-   <center>
-      <HBox fx:id="Hcenter" alignment="CENTER" prefHeight="323.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" onAction="#Preguntas" prefHeight="59.0" prefWidth="148.0" text="PREGUNTAS" />
-            <Button mnemonicParsing="false" onAction="#Respuestas" prefHeight="58.0" prefWidth="153.0" text="RESPUESTAS">
-               <HBox.margin>
-                  <Insets left="50.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
-   </center>
    <top>
-      <HBox fx:id="Htop" alignment="CENTER" prefHeight="77.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="Htop" alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#Return" prefHeight="33.0" prefWidth="90.0" text="RETURN" />
+            <Button mnemonicParsing="false" onAction="#Return" prefHeight="29.0" prefWidth="82.0" style="-fx-background-color: #974336;" text="Return" textFill="#fbfafa">
+               <font>
+                  <Font name="Ravie" size="12.0" />
+               </font></Button>
          </children>
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
       </HBox>
    </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="#f5d8a9" stroke="#854034" strokeType="OUTSIDE" strokeWidth="4.0" text="CREA TU PROPIO JUEGO" textAlignment="CENTER">
+               <font>
+                  <Font name="Ravie" size="20.0" />
+               </font>
+            </Text>
+            <Text fill="#974336" stroke="#f5d8a9" strokeType="OUTSIDE" text="¡ Sube tus propios archivos de preguntas y respuestas !">
+               <VBox.margin>
+                  <Insets top="25.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Kristen ITC" size="15.0" />
+               </font>
+            </Text>
+            <HBox fx:id="Hcenter" alignment="CENTER" prefHeight="323.0" prefWidth="600.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#Preguntas" prefHeight="41.0" prefWidth="153.0" style="-fx-background-color: #d07f19;" text="PREGUNTAS" textFill="WHITE">
+                     <font>
+                        <Font name="Ravie" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#Respuestas" prefHeight="41.0" prefWidth="153.0" style="-fx-background-color: #d07f19;" text="RESPUESTAS" textFill="#fbfafa">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Ravie" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
 </BorderPane>

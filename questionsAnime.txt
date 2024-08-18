@@ -1,7 +1,0 @@
-¿Es un ser humano?
-¿Es un robot?;0
-¿Tiene habilidades especiales?;1
-¿Es un pato?;0;0
-Es azul?;0;1
-¿Viene de pueblo Paleta?;1;0
-¿Se puede convertir en titan?;1;1

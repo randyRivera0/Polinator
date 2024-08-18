@@ -4,20 +4,34 @@
  */
 package ec.edu.espol.polinator;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -36,8 +50,6 @@ public class OptionsController implements Initializable {
     @FXML
     private Button buttonPrevScene;
     @FXML
-    private TextArea textAreaOptions;
-    @FXML
     private Label labelCentral;
        
     @FXML
@@ -47,9 +59,13 @@ public class OptionsController implements Initializable {
     @FXML
     private HBox hpaneBottom;
     @FXML
-    private VBox Central;
+    private FlowPane central;
+    @FXML
+    private ScrollPane sp;
     @FXML
     private VBox vapenRight;
+    @FXML
+    private BorderPane bp;
 
     /**
      * Initializes the controller class.
@@ -58,39 +74,44 @@ public class OptionsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         this.round = App.getRound();
+        cargarPersonajes();
+        Image image = new Image(getClass().getResourceAsStream("/img/fondo.jpeg"));
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(680);
+        imageView.setFitHeight(480);
+        bp.getChildren().add(0, imageView); // Agregar imagen al fondo
         
-        setQuestionsText();
-        
-        textAreaOptions.setEditable(false); // No permite edición
-        textAreaOptions.setStyle(
-            "-fx-background-color: #F5F5DC;" +   // Fondo beige
-            "-fx-font-size: 20px;" +             // Tamaño de letra
-            "-fx-font-family: 'Arial';" +        // Tipo de letra
-            "-fx-text-fill: #000080;" +          // Color del texto
-            //"-fx-border-color: #8B4513;" +       // Color del borde
-            "-fx-border-width: 2px;" +           // Ancho del borde
-            "-fx-text-alignment: center;" +      // Centrando el texto horizontalmente
-            "-fx-alignment: center;"  );
-        
-        textAreaOptions.setWrapText(true); // Para que el texto se ajuste al tamaño
-        textAreaOptions.setPrefColumnCount(1); // Ajustar para un ancho adecuado
+    }
+    
 
-        hpaneBottom.setStyle("-fx-background-color: #FAEDCE;"); 
-        hpaneTop.setStyle("-fx-background-color: #FAEDCE;");  // Esto aplica un color de fondo azul claro
-        vpaneLeft.setStyle("-fx-background-color: #FAEDCE;");
-        vapenRight.setStyle("-fx-background-color: #FAEDCE;");
-        Central.setStyle("-fx-background-color:#FEFAE0 ;");
-            
+    public void cargarPersonajes() {
+        List<String> namesList = round.getQuestionsList();
+        
+        central.setHgap(10);
+        central.setVgap(10);
+        central.setPadding(new Insets(10));
+        
+        for (String name : namesList) {
+            Image image = new Image(getClass().getResourceAsStream("/img/"+name +".jpg"));
+                ImageView imageView = new ImageView(image);
+                imageView.setFitWidth(100);  
+                imageView.setPreserveRatio(true); 
+
+                VBox vbox = new VBox(10); 
+                vbox.setAlignment(Pos.CENTER);
+                Label nameLabel = new Label(name);
+                nameLabel.setAlignment(Pos.CENTER); 
+                nameLabel.setFont(Font.font("Arial", javafx.scene.text.FontWeight.BOLD, 12)); 
+                nameLabel.setWrapText(true);
+                vbox.getChildren().addAll(imageView, nameLabel);
+
+                central.getChildren().add(vbox);
+        }
+        sp.setFitToWidth(true);
+        sp.setContent(central);
+
     }
-    
-    
-    public void setQuestionsText() {
-              
-        String text = round.getStringQuestions();
-        textAreaOptions.setText(text);
-              
-    }
-     
+      
     @FXML
     public void AbrirVentana(ActionEvent event) {
        /*try {

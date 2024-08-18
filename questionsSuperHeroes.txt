@@ -1,15 +1,15 @@
-¿Es hombre?
-¿Tiene cabello oscuro?;0
-¿Tiene cabello rubio?;1
-¿Es un alienigena?;0;0
-¿Tiene super fuerza?;0;1
-¿Puede volar?;1;0
-¿Usa una Espada?;1;1
-¿Es una mutante?;0;0;0
-¿Es una joven titan?;0;0;1
-¿Tiene relacion con algún animal?;0;1;0
-¿Usa un lazo?;0;1;1
-¿Usa armas?;1;0;0
-¿Es de la tierra?;1;0;1
-¿Usa el Mjolnir?;1;1;0
-¿Tiene una bandera en su traje?;1;1;1
+¿Tu personaje es hombre?
+¿Tu personaje tiene cabello oscuro?;0
+¿Tu personaje tiene cabello rubio?;1
+¿Tu personaje es un alienigena?;0;0
+¿Tu personaje tiene super fuerza?;0;1
+¿Tu personaje puede volar?;1;0
+¿Tu personaje usa una espada?;1;1
+¿Tu personaje es una mutante?;0;0;0
+¿Tu personaje es una joven titan?;0;0;1
+¿Tu personaje tiene relacion con algún animal?;0;1;0
+¿Tu personaje usa un lazo?;0;1;1
+¿Tu personaje usa armas?;1;0;0
+¿Tu personaje es de la tierra?;1;0;1
+¿Tu personaje usa el Mjolnir?;1;1;0
+¿Tu personaje tiene una bandera en su traje?;1;1;1

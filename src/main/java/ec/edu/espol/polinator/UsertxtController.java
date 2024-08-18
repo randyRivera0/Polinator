@@ -17,6 +17,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -38,6 +41,8 @@ public class UsertxtController implements Initializable {
     private HBox Hbuttom;
     @FXML
     private HBox Hcenter;
+    @FXML
+    private BorderPane bp;
     public Round round;
 
 
@@ -47,9 +52,12 @@ public class UsertxtController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.round = App.getRound();
-        Hbuttom.setStyle("-fx-background-color: #CCD5AE;");
-        Htop.setStyle("-fx-background-color: #CCD5AE;");
-        Hcenter.setStyle("-fx-background-color: #E0E5B6;");
+        Image image = new Image(getClass().getResourceAsStream("/img/fondo2.jpeg"));
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(680);
+        imageView.setFitHeight(480);
+        bp.getChildren().add(0, imageView); // Agregar imagen al fondo
+        
     }    
 
     /*

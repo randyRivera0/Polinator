@@ -98,7 +98,7 @@ public class Round <E>{
                 controller.setQuestion("");
                 controller.CargarGif("img/sad.gif");
 
-                controller.setResult("PARECE SER QUE NO ENCONTRE EL PERSONAJE :(");
+                controller.setResult("Parece que no encontré el personaje :(");
                 controller.buttonYesVisible=false;
                 controller.buttonNoVisible=false;
 
@@ -109,7 +109,7 @@ public class Round <E>{
                     controller.setQuestion("");
                     System.out.println(getClass().getResource("/img/" + (String) node.getData() + ".jpg"));
                     controller.CargarImagen((String) node.getData());
-                    controller.setResult("EL PERSONAJE EN EL QUE PENSASTE ES:  "+ node.getData() +"!");
+                    controller.setResult("El personaje en el que pensaste es: "+ node.getData() +"!");
                     controller.buttonYesVisible=false;
                     controller.buttonNoVisible=false;
                     isFinished = true;
@@ -122,7 +122,7 @@ public class Round <E>{
                         
                         List<Node<E>> possibleNodes = node.childrenNodesList();
                         System.out.println(possibleNodes);
-                        StringBuilder nodesText = new StringBuilder("POSIBLEMENTE SEA "+"UNO DE ESTOS:\n");
+                        StringBuilder nodesText = new StringBuilder("Posiblemente sea "+"uno de estos:\n");
 
                         for (Node<E> n : possibleNodes) {
 
@@ -133,19 +133,17 @@ public class Round <E>{
                         
                         //controller.setResult(nodesText.toString());
                         //controller.setQuestion("");
-                        controller.CargarGif("img/"+"surprise"+".gif");
-                        VBox v= new VBox();
-                        v.setStyle("-fx-background-color: #E0E5B6;");
-                        Label a= new Label();
-                        a.setTextAlignment(TextAlignment.CENTER);
-                        a.setFont(new Font("Bookman Old Style", 24)); 
-                        a.setText(nodesText.toString());
+                        //controller.CargarGif("img/"+"surprise"+".gif");
+                        //VBox v= new VBox();
+                        //v.setStyle("-fx-background-color: #E0E5B6;");
+                        
+                        //a.setText(nodesText.toString());
+                        controller.setQuestion(nodesText.toString());
                         StackPane root = new StackPane();
-                        root.getChildren().add(a);
-                        v.getChildren().add(root);
-                        v.setAlignment(Pos.CENTER);
-                        v.setFillWidth(true);
-                        controller.vpaneCentral.getChildren().add(v);
+                        //v.getChildren().add(root);
+                        //v.setAlignment(Pos.CENTER);
+                        //v.setFillWidth(true);
+                        //controller.vpaneCentral.getChildren().add(v);
                         controller.buttonYesVisible=false;
                         controller.buttonNoVisible=false;
 
@@ -217,18 +215,15 @@ public class Round <E>{
     }
                 
     
-    public String getStringQuestions(){
-        
-        StringBuilder sb = new StringBuilder();
-        
-        List<Node<String>> lista = tree.getRoot().childrenNodesList();
-        
-        for(Node<String> node : lista ){
-            sb.append(node.data).append("\n");
+    public List<String> getQuestionsList() {
+    List<String> questionsList = new ArrayList<>();
+    List<Node<String>> lista = tree.getRoot().childrenNodesList();
+    
+        for(Node<String> node : lista) {
+            questionsList.add(node.data);
         }
-        
-        return sb.toString();
-        
+    
+    return questionsList;
     }
 
     public String getSubject() {

@@ -40,7 +40,7 @@ public class RoundController implements Initializable {
     @FXML
     private Text textQuestion;
     @FXML
-    private Label textResult;
+    private Text textResult;
     @FXML
     private Button buttonPrevScene;
     @FXML
@@ -67,13 +67,14 @@ public class RoundController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         this.round = App.getRound();
         textQuestion.setText((String) round.getTree().getRoot().getData());
-        
-        hpaneBottom.setStyle("-fx-background-color: #CCD5AE;");
-        hpaneTop.setStyle("-fx-background-color: #CCD5AE;");
-        vpaneCentral.setStyle("-fx-background-color: #E0E5B6;");
-        // text= new TextArea();
         buttonYesVisible=true;
         buttonNoVisible=true;
+        textResult.setVisible(false);
+        Image image = new Image(getClass().getResourceAsStream("/img/fondo.jpeg"));
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(680);
+        imageView.setFitHeight(480);
+        borderPane.getChildren().add(0, imageView); // Agregar imagen al fondo
 
     }    
     
@@ -83,6 +84,7 @@ public class RoundController implements Initializable {
         decision = button.getText().toLowerCase();
         round.turn(this);
         textQuestion.setText(question);
+        textResult.setVisible(true);
         textResult.setText(result);
         ButtonSi.setVisible(buttonYesVisible);
         ButtonNo.setVisible(buttonNoVisible);

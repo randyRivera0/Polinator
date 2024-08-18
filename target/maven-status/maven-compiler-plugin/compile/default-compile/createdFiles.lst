@@ -15,4 +15,5 @@ ec\edu\espol\polinator\LobbyController.class
 ec\edu\espol\polinator\TreeNodeDecision.class
 ec\edu\espol\polinator\LobbyController$HiloFlashHBox.class
 ec\edu\espol\polinator\OptionsController.class
+ec\edu\espol\polinator\NumPreguntasController.class
 ec\edu\espol\polinator\Node.class

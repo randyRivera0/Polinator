@@ -2,63 +2,103 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.polinator.LobbyController">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.polinator.LobbyController">
    <center>
       <VBox fx:id="vpaneOptions" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="ButtonSubmit" mnemonicParsing="false" onAction="#submit" prefHeight="25.0" prefWidth="100.0" text="SUBMIT FILE">
+            <Text fill="#f9ab2c" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Selecciona la temática">
+               <font>
+                  <Font name="Kristen ITC" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="17.0" top="30.0" />
+               </VBox.margin>
+            </Text>
+            <Button fx:id="ButtonSitcoms" mnemonicParsing="false" onAction="#playRound" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #f9ab2c; -fx-border-color: black; -fx-border-radius: 3; -fx-border-width: 2; -fx-effect: dropshadow(gaussian, black, 4, 0.3, 1, 1);" text="Sitcoms">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Ravie" size="14.0" />
+               </font>
             </Button>
-            <Button fx:id="ButtonAnime" mnemonicParsing="false" onAction="#playRound" prefHeight="25.0" prefWidth="98.0" text="Anime">
+            <Button fx:id="ButtonAnimals" mnemonicParsing="false" onAction="#playRound" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #f9ab2c; -fx-border-color: black; -fx-border-radius: 3; -fx-border-width: 2; -fx-effect: dropshadow(gaussian, black, 4, 0.3, 1, 1);" text="Animals">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Ravie" size="14.0" />
+               </font>
             </Button>
-            <Button fx:id="ButtonAnimals" mnemonicParsing="false" onAction="#playRound" prefHeight="25.0" prefWidth="98.0" text="Animals">
+            <Button fx:id="buttonSuperHeroes" mnemonicParsing="false" onAction="#playRound" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #f9ab2c; -fx-border-color: black; -fx-border-radius: 3; -fx-border-width: 2; -fx-effect: dropshadow(gaussian, black, 4, 0.3, 1, 1);" text="SuperHeroes">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
-            </Button>
-            <Button fx:id="buttonSuperHeroes" mnemonicParsing="false" onAction="#playRound" prefHeight="25.0" prefWidth="101.0" text="SuperHeroes">
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
+               <font>
+                  <Font name="Ravie" size="14.0" />
+               </font>
             </Button>
             <TextField fx:id="textFieldNumQuestions" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Numero de preguntas">
                <VBox.margin>
                   <Insets bottom="20.0" top="10.0" />
                </VBox.margin></TextField>
-            <Button mnemonicParsing="false" onAction="#MyGames" text="MY GAMES" />
          </children>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
       </VBox>
    </center>
-   <left>
-      <VBox fx:id="vpaneGIF" alignment="CENTER" prefHeight="287.0" prefWidth="381.0" BorderPane.alignment="CENTER" />
-   </left>
    <top>
       <HBox fx:id="hpaneTop" alignment="CENTER" prefHeight="67.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox fx:id="hpaneLabel" prefHeight="42.0" prefWidth="422.0">
+            <HBox fx:id="hpaneLabel" alignment="CENTER" prefHeight="42.0" prefWidth="422.0">
                <children>
-                  <Label fx:id="titulo" prefHeight="71.0" prefWidth="422.0" text="BIENVENIDO AL JUEGO POLINATOR " textAlignment="CENTER" textFill="#0000006b">
+                  <Text fx:id="titulo" fill="#fbe619" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0" text="¡ BIENVENIDO AL JUEGO !" textAlignment="CENTER" wrappingWidth="218.56024169921875">
                      <font>
-                        <Font name="Palatino Linotype" size="23.0" />
+                        <Font name="Ravie" size="22.0" />
                      </font>
-                  </Label>
+                     <HBox.margin>
+                        <Insets top="70.0" />
+                     </HBox.margin>
+                  </Text>
                </children>
             </HBox>
          </children></HBox>
    </top>
    <bottom>
-      <HBox fx:id="hpaneBajo" prefHeight="63.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+      <HBox fx:id="hpaneBajo" prefHeight="63.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="#f9ab2c" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="o crea tu propio juego -&gt;">
+               <font>
+                  <Font name="Kristen ITC" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Text>
+            <Button fx:id="ButtonSubmit" mnemonicParsing="false" onAction="#submit" prefHeight="31.0" prefWidth="158.0" style="-fx-background-color: black; -fx-border-color: orange; -fx-border-radius: 3; -fx-border-width: 3;" text="Subir mi archivo" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Ravie" size="12.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#MyGames" style="-fx-background-color: black; -fx-border-color: orange; -fx-border-width: 3; -fx-border-radius: 3;" text="Mis creaciones" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="60.0" right="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Ravie" size="12.0" />
+               </font></Button>
+         </children>
+      </HBox>
    </bottom>
 </BorderPane>

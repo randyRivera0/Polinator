@@ -23,8 +23,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -47,7 +49,7 @@ public class LobbyController implements Initializable {
     @FXML
     private HBox hpaneBajo;
     @FXML
-    private Label titulo;
+    private Text titulo;
     @FXML
     private HBox hpaneLabel;
     
@@ -55,11 +57,13 @@ public class LobbyController implements Initializable {
     @FXML
     private Button ButtonSubmit;
     @FXML
-    private Button ButtonAnime;
+    private Button ButtonSitcoms;
     @FXML
     private Button ButtonAnimals;
     @FXML
     private Button buttonSuperHeroes;
+    @FXML
+    private BorderPane bp;
 
  
     /**
@@ -72,24 +76,30 @@ public class LobbyController implements Initializable {
             
             this.round = App.getRound();
             
-            // TODO
+            /*
             vpaneGIF.setStyle("-fx-background-color: #FEF3E2;");  // Esto aplica un color de fondo azul claro
             hpaneTop.setStyle("-fx-background-color: #BEC6A0;");
             hpaneLabel.setStyle("-fx-background-color: #BEC6A0;");
             hpaneBajo.setStyle("-fx-background-color:#BEC6A0 ;");
             vpaneOptions.setStyle("-fx-background-color: #FEF3E2;");
-            titulo.setStyle("-fx-text-fill: #1A5319;"); 
+            //titulo.setStyle("-fx-text-fill: #1A5319;"); 
             //#BEC6A0
+            */
             
+            Image image = new Image(getClass().getResourceAsStream("/img/principal.jpeg"));
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(680);
+            imageView.setFitHeight(480);
+            bp.getChildren().add(0, imageView); // Agregar imagen al fondo
 
-            // Cargar el GIF
+            /*Cargar el GIF
             Image image = new Image(getClass().getResourceAsStream("/img/turtle.gif"));
             ImageView imv = new ImageView(image);
             
             
             imv.setFitWidth(250);
             imv.setFitHeight(250);
-            vpaneGIF.getChildren().add(imv);
+            vpaneGIF.getChildren().add(imv);*/
         } 
         
         catch (NullPointerException ex) {
@@ -155,7 +165,6 @@ public class LobbyController implements Initializable {
 
         HiloFlashHBox(HBox hbox) {
             this.hbox = hbox;
-            hbox.setStyle("-fx-background-color: #BEC6A0;");
         }
 
         @Override
@@ -215,6 +224,7 @@ public class LobbyController implements Initializable {
         round.setNumQuestions(numQuestions);
         Button b = (Button) event.getSource();
         String subject = b.getText();
+        //System.out.println(Paths.get("questions" + subject + ".txt"));
         round.setSubject(subject);
         round.changeQuestions();
         

@@ -69,15 +69,21 @@ public class UserGamesController implements Initializable {
         gamesContainer.setStyle("-fx-padding: 20; -fx-alignment: center;"); // Centramos los botones
         BorderPane.setCenter(gamesContainer); // Colocar el VBox en el centro del BorderPane
         displayGames();
-        // TODO
+        /*
         Hbuttom.setStyle("-fx-background-color: #CCD5AE;");
         Htop.setStyle("-fx-background-color: #CCD5AE;");
         hleft.setStyle("-fx-background-color: #E0E5B6;");
         
         hright.setStyle("-fx-background-color: #E0E5B6;");
+        */
         
+        Image image = new Image(getClass().getResourceAsStream("/img/fondo2.jpeg"));
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(680);
+        imageView.setFitHeight(480);
+        BorderPane.getChildren().add(0, imageView); // Agregar imagen al fondo
         
-        
+        /*
         Image image = new Image(getClass().getResourceAsStream("/img/games.gif"));
             ImageView imv = new ImageView(image);
             imv.setFitWidth(150);
@@ -90,7 +96,7 @@ public class UserGamesController implements Initializable {
             vbox.setFillWidth(true);
 
             hright.getChildren().add(vbox);
-            
+            */
   
     }   
     

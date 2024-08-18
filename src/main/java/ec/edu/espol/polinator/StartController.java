@@ -37,7 +37,7 @@ public class StartController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Agregar la imagen programáticamente
-        Image image = new Image(getClass().getResourceAsStream("/img/inicio.jpg"));
+        Image image = new Image(getClass().getResourceAsStream("/img/principal.jpeg"));
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(680);
         imageView.setFitHeight(480);

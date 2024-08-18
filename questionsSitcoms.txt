@@ -1,0 +1,15 @@
+¿Es un personaje de anime?
+¿Tu personaje es un hombre?;0
+¿Tu personaje es un ser humano?;1
+¿Tu personaje es rubia?;0;0
+¿Tu personaje es descendiente americano?;0;1
+¿Tu personaje es un robot?;1;0
+¿Tu personaje tiene habilidades especiales?;1;1
+¿Tu personaje tiene un doctorado?;0;0;0
+¿Tu personaje esta casada con Howard?;0;0;1
+¿Su familia es rica entre la fortuna de Bruce Wayne y Rico McPato?;0;1;0
+¿Tu personaje tiene intolerancia a la lactosa?;0;1;1
+¿Tu personaje es un pato?;1;0;0
+¿Tu personaje es azul?;1;0;1
+¿Tu personaje viene de pueblo Paleta?;1;1;0
+¿Tu personaje se puede convertir en titan?;1;1;1

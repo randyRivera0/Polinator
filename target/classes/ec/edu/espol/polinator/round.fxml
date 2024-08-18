@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -10,36 +9,46 @@
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.polinator.RoundController">
    <center>
-      <VBox fx:id="vpaneCentral" alignment="CENTER" prefHeight="249.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="vpaneCentral" alignment="CENTER" prefHeight="145.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fx:id="textQuestion" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+            <Text fx:id="textQuestion" fill="WHITE" stroke="#a67648" strokeType="OUTSIDE" strokeWidth="2.0" text="Text" textAlignment="CENTER" wrappingWidth="486.7319869995117">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Kristen ITC" size="28.0" />
                </font></Text>
          </children>
       </VBox>
    </center>
    <bottom>
-      <HBox fx:id="hpaneBottom" alignment="CENTER" prefHeight="56.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="hpaneBottom" alignment="CENTER" prefHeight="131.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="ButtonSi" mnemonicParsing="false" onAction="#buttonTurn" text="SI" />
+            <Button fx:id="ButtonSi" mnemonicParsing="false" onAction="#buttonTurn" style="-fx-background-color: #a67648;" text="SI" textFill="WHITE">
+               <font>
+                  <Font name="Ravie" size="29.0" />
+               </font></Button>
             <VBox prefHeight="200.0" prefWidth="100.0" />
-            <Button fx:id="ButtonNo" mnemonicParsing="false" onAction="#buttonTurn" text="NO" />
+            <Button fx:id="ButtonNo" mnemonicParsing="false" onAction="#buttonTurn" style="-fx-background-color: #a67648;" text="NO" textFill="WHITE">
+               <font>
+                  <Font name="Ravie" size="29.0" />
+               </font></Button>
          </children>
       </HBox>
    </bottom>
    <top>
-      <HBox fx:id="hpaneTop" alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="hpaneTop" alignment="CENTER_LEFT" prefHeight="107.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="77.0" prefWidth="142.0">
                <children>
-                  <Button fx:id="buttonPrevScene" mnemonicParsing="false" onAction="#prevScene" text="RETURN" />
+                  <Button fx:id="buttonPrevScene" mnemonicParsing="false" onAction="#prevScene" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #e3b373; -fx-border-color: white;" text="Return" textFill="WHITE">
+                     <font>
+                        <Font name="Ravie" size="12.0" />
+                     </font></Button>
                </children>
             </HBox>
-            <Label fx:id="textResult" prefHeight="77.0" prefWidth="450.0" textAlignment="CENTER">
+            <Text fx:id="textResult" fill="#a67648" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="Text">
                <font>
-                  <Font name="Bookman Old Style Bold" size="12.0" />
-               </font></Label>
+                  <Font name="Kristen ITC" size="15.0" />
+               </font>
+            </Text>
          </children>
       </HBox>
    </top>

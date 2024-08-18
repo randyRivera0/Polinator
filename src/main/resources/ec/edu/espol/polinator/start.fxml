@@ -9,6 +9,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -16,7 +19,7 @@
    <children>
       <ImageView fitHeight="480.0" fitWidth="680.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../img/inicio.jpg" />
+            <Image url="@../../../../img/principal.jpeg" />
          </image>
          <viewport>
             <Rectangle2D height="480.0" width="680.0" />
@@ -36,7 +39,7 @@
          <children>
             <HBox alignment="BOTTOM_CENTER" prefHeight="134.0" prefWidth="135.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <children>
-                  <Text fill="#c97d13" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(gaussian, black, 10, 0.5, 1, 1);" text="WELCOME TO" textAlignment="CENTER">
+                  <Text fill="#c97d13" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="WELCOME TO" textAlignment="CENTER">
                      <font>
                         <Font name="Kristen ITC" size="34.0" />
                      </font>
@@ -45,16 +48,37 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Text fill="#bffda2" nodeOrientation="RIGHT_TO_LEFT" stroke="#c97d13" strokeType="OUTSIDE" strokeWidth="4.0" style="-fx-effect: dropshadow(gaussian, #c97d13, 4, 0.3, 3, 3);" text="POLINATOR" textAlignment="CENTER" wrappingWidth="353.5000915527344" HBox.hgrow="ALWAYS">
+                  <Text nodeOrientation="RIGHT_TO_LEFT" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="4.0" style="-fx-effect: dropshadow(gaussian, black, 4, 0.3, 3, 3);" text="POLINATOR" textAlignment="CENTER" wrappingWidth="353.5000915527344" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="Ravie" size="43.0" />
                      </font>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.7251181602478027" green="0.8299999833106995" blue="0.4731000065803528" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.5500627489496371">
+                                 <color>
+                                    <Color red="1.0" green="0.9489712119102478" blue="0.904321014881134" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.949999988079071" green="0.6790290474891663" blue="0.42750000953674316" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
                   </Text>
                </children>
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="button" mnemonicParsing="false" onAction="#abrirPrimary" prefHeight="49.0" prefWidth="130.0" style="-fx-background-color: #2d405a; -fx-border-color: #c97d13; -fx-border-width: 4; -fx-border-radius: 4; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 2, 2);" text="JUGAR" textFill="#bffda2">
+                  <Button fx:id="button" mnemonicParsing="false" onAction="#abrirPrimary" prefHeight="49.0" prefWidth="130.0" style="-fx-background-color: black; -fx-border-color: orange; -fx-border-width: 4; -fx-border-radius: 4; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 2, 2);" text="JUGAR" textFill="#fbfafa">
                      <font>
                         <Font name="Ravie" size="21.0" />
                      </font>
