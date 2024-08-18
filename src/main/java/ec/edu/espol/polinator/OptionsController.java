@@ -121,7 +121,8 @@ public class OptionsController implements Initializable {
         }
         }*/
         
-        
+        VBox column = new VBox(10); // Crear un VBox para organizar los nombres en columna
+        column.setAlignment(Pos.CENTER); 
         for (int i = 0; i < namesList.size(); i++) {
             String name = namesList.get(i);
             try {
@@ -144,19 +145,21 @@ public class OptionsController implements Initializable {
                 vbox.setAlignment(Pos.CENTER);
 
                 // Si no es el último elemento, añadir el guion
-                String displayName = (i < namesList.size() - 1) ? name + " -" : name;
+                String displayName = (i < namesList.size() - 1) ? "-" + name  : name;
 
                 Label nameLabel = new Label(displayName);
                 nameLabel.setAlignment(Pos.CENTER); 
-                nameLabel.setFont(Font.font("Arial", javafx.scene.text.FontWeight.BOLD, 50)); 
+                nameLabel.setFont(Font.font("Kristen ITC", 18)); 
                 nameLabel.setWrapText(true);
+                nameLabel.setStyle("-fx-text-fill:  white;"); 
                 vbox.getChildren().addAll(nameLabel);
 
-                central.getChildren().add(vbox);
+                //central.getChildren().add(vbox);
+                column.getChildren().add(vbox);
             }
         }
         
-        
+        central.getChildren().add(column);
         sp.setFitToWidth(true);
         sp.setContent(central);
 

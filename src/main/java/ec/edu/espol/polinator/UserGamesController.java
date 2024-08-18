@@ -134,7 +134,18 @@ public class UserGamesController implements Initializable {
         for (Node game : GameSet.getInstance().getGames()) {
             System.out.println(game.data);
             System.out.println(game.left);
-            Button gameButton = new Button("Game :"+(count+=1));
+            Button gameButton = new Button("Game : "+(count+=1));
+            gameButton.setStyle(
+            "-fx-background-color:  #d07f19;" +   // Color de fondo 
+            "-fx-text-fill: white;" +            // Color del texto 
+            "-fx-font-family: 'Ravie';" +        // Tipo de letra
+            "-fx-font-size: 14px;" +             // Tamaño de la letra
+            "-fx-border-color: #854034;" +       // Color del borde 
+            "-fx-border-width: 2px;"  +           // Ancho del borde
+            "-fx-border-radius: 10px;" +         // Curvatura del borde
+            "-fx-background-radius: 3px;" +     // Curvatura del fondo (coincide con el borde)
+            "-fx-padding: 20px 41px;"            // Tamaño del botón (padding)
+        );
             gameButton.setOnAction(e -> {
                 //startGame(game);
                 

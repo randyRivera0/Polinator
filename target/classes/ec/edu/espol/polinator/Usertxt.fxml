@@ -53,12 +53,12 @@
             </Text>
             <HBox fx:id="Hcenter" alignment="CENTER" prefHeight="323.0" prefWidth="600.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#Preguntas" prefHeight="41.0" prefWidth="153.0" style="-fx-background-color: #d07f19;" text="PREGUNTAS" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#Preguntas" prefHeight="41.0" prefWidth="153.0" style="-fx-background-color: #d07f19; -fx-effect: dropshadow(gaussian,  #974336, 4, 0.5, 2, 2);" text="PREGUNTAS" textFill="WHITE">
                      <font>
                         <Font name="Ravie" size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#Respuestas" prefHeight="41.0" prefWidth="153.0" style="-fx-background-color: #d07f19;" text="RESPUESTAS" textFill="#fbfafa">
+                  <Button mnemonicParsing="false" onAction="#Respuestas" prefHeight="41.0" prefWidth="153.0" style="-fx-background-color: #d07f19; -fx-effect: dropshadow(gaussian,  #974336, 4, 0.5, 2, 2);" text="RESPUESTAS" textFill="#fbfafa">
                      <HBox.margin>
                         <Insets left="50.0" />
                      </HBox.margin>
