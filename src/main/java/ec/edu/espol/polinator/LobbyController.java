@@ -76,30 +76,13 @@ public class LobbyController implements Initializable {
             
             this.round = App.getRound();
             
-            /*
-            vpaneGIF.setStyle("-fx-background-color: #FEF3E2;");  // Esto aplica un color de fondo azul claro
-            hpaneTop.setStyle("-fx-background-color: #BEC6A0;");
-            hpaneLabel.setStyle("-fx-background-color: #BEC6A0;");
-            hpaneBajo.setStyle("-fx-background-color:#BEC6A0 ;");
-            vpaneOptions.setStyle("-fx-background-color: #FEF3E2;");
-            //titulo.setStyle("-fx-text-fill: #1A5319;"); 
-            //#BEC6A0
-            */
-            
             Image image = new Image(getClass().getResourceAsStream("/img/principal.jpeg"));
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(680);
             imageView.setFitHeight(480);
             bp.getChildren().add(0, imageView); // Agregar imagen al fondo
 
-            /*Cargar el GIF
-            Image image = new Image(getClass().getResourceAsStream("/img/turtle.gif"));
-            ImageView imv = new ImageView(image);
-            
-            
-            imv.setFitWidth(250);
-            imv.setFitHeight(250);
-            vpaneGIF.getChildren().add(imv);*/
+        
         } 
         
         catch (NullPointerException ex) {
@@ -212,10 +195,7 @@ public class LobbyController implements Initializable {
                 
             }
         }
-        /*catch (InvalidNumQuestionsException invalidNumQuestionsException) {
-            showAlert(invalidNumQuestionsException.getMessage());
-            return; // Exit the method early if validation fails
-        }*/
+      
         catch(NumberFormatException numberFormatException){
             showAlert("Por favor, ingrese un numero valido");
             return;
@@ -228,13 +208,7 @@ public class LobbyController implements Initializable {
         round.setSubject(subject);
         round.changeQuestions();
         
-        /*try{
-            App.setRoot("options");
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }*/
-        
+   
         Abrir("Options");
         
         Stage s = (Stage) b.getScene().getWindow();

@@ -91,35 +91,7 @@ public class OptionsController implements Initializable {
         central.setVgap(10);
         central.setPadding(new Insets(10));
         
-        /*for (String name : namesList) {
-                   try {
-            Image image = new Image(getClass().getResourceAsStream("/img/" + name + ".jpg"));
-            ImageView imageView = new ImageView(image);
-            imageView.setFitWidth(100);  
-            imageView.setPreserveRatio(true); 
-
-            VBox vbox = new VBox(10); 
-            vbox.setAlignment(Pos.CENTER);
-            Label nameLabel = new Label(name);
-            nameLabel.setAlignment(Pos.CENTER); 
-            nameLabel.setFont(Font.font("Arial", javafx.scene.text.FontWeight.BOLD, 12)); 
-            nameLabel.setWrapText(true);
-            vbox.getChildren().addAll(imageView, nameLabel);
-
-            central.getChildren().add(vbox);
-        } catch (Exception e) {
-           
-            VBox vbox = new VBox(10); 
-            vbox.setAlignment(Pos.CENTER);
-            Label nameLabel = new Label(name+ " - ");
-            nameLabel.setAlignment(Pos.CENTER); 
-            nameLabel.setFont(Font.font("Arial", javafx.scene.text.FontWeight.BOLD, 50)); 
-            nameLabel.setWrapText(true);
-            vbox.getChildren().addAll(nameLabel);
-
-            central.getChildren().add(vbox);
-        }
-        }*/
+     
         
         VBox column = new VBox(10); // Crear un VBox para organizar los nombres en columna
         column.setAlignment(Pos.CENTER); 
@@ -167,13 +139,7 @@ public class OptionsController implements Initializable {
       
     @FXML
     public void AbrirVentana(ActionEvent event) {
-       /*try {
-            App.setRoot("round");
-        } 
-        catch (IOException ex) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
-            a.show();
-        }*/
+     
        Abrir("round");
        Button b = (Button) event.getSource();
        Stage s = (Stage) b.getScene().getWindow();
@@ -183,12 +149,7 @@ public class OptionsController implements Initializable {
 
     @FXML
     private void prevScene(ActionEvent event) {
-        /*try {
-            App.setRoot("lobby");
-        } catch (IOException ex) {
-            Alert a = new Alert(Alert.AlertType.ERROR,"No se pudo abrir el fxml");
-            a.show();
-        }*/
+       
         Abrir("lobby");
         Button b = (Button) event.getSource();
         Stage s = (Stage) b.getScene().getWindow();

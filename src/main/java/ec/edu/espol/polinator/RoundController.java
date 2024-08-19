@@ -159,13 +159,7 @@ public class RoundController implements Initializable {
     
     @FXML
     private void prevScene(ActionEvent event) {
-        /*try {
-            App.setRoot("lobby");
-        } catch (IOException ex) {
-            Alert a = new Alert(Alert.AlertType.ERROR,"No se pudo abrir el fxml");
-            a.show();
-        }*/
-        Abrir("lobby");
+         Abrir("lobby");
         Button b = (Button) event.getSource();
         Stage s = (Stage) b.getScene().getWindow();
         s.close();

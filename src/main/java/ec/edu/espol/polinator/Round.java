@@ -47,44 +47,7 @@ public class Round <E>{
                 
                 controller.setQuestion("");
                 controller.CargarGif("img/surprise.gif");
-                
-                /*
-                controller.showAlert("No suficientes preguntas. Nodo: " + getTree().getRoot().childrenNodesList());
-                
-                
-                try {
-                    App.setRoot("possibles");
-                }
-                catch (IOException ex) {
-                    Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el fxml");
-                    a.show();
-                }
-                
 
-                List<Node<String>> possibleNodes = currentNode.childrenNodesList();
-                StringBuilder nodesText = new StringBuilder("POSIBLEMENTE SEA UNO DE ESTOS:\n");
-
-                for (Node<String> node : possibleNodes) {
-                    nodesText.append(node.data).append("\n");
-                }
-
-                controller.buttonYesVisible=false;
-                controller.buttonNoVisible=false;
-                    VBox v= new VBox();
-                    v.setStyle("-fx-background-color: #E0E5B6;");
-                    Label a= new Label();
-                    a.setTextAlignment(TextAlignment.CENTER);
-                     a.setFont(new Font("Bookman Old Style", 24)); 
-                    a.setText(nodesText.toString());
-                    StackPane root = new StackPane();
-                    root.getChildren().add(a);
-                    v.getChildren().add(root);
-                    v.setAlignment(Pos.CENTER);
-                    v.setFillWidth(true);
-                    borderPane.setLeft(v);
-
-                    return;
-                */
             }
             
             else if (numQuestions>0){
@@ -107,7 +70,6 @@ public class Round <E>{
                
                 else if(node.isLeaf()){
                     controller.setQuestion("");
-                    System.out.println(getClass().getResource("/img/" + (String) node.getData() + ".jpg"));
                     controller.CargarImagen((String) node.getData());
                     controller.setResult("El personaje en el que pensaste es: "+ node.getData() +"!");
                     controller.buttonYesVisible=false;
@@ -121,7 +83,6 @@ public class Round <E>{
                     if (numQuestions == 1) {
                         
                         List<Node<E>> possibleNodes = node.childrenNodesList();
-                        System.out.println(possibleNodes);
                         StringBuilder nodesText = new StringBuilder("Posiblemente sea "+"uno de estos:\n");
 
                         for (Node<E> n : possibleNodes) {
@@ -130,43 +91,18 @@ public class Round <E>{
 
                           }
                         
-                        
-                        //controller.setResult(nodesText.toString());
-                        //controller.setQuestion("");
-                        //controller.CargarGif("img/"+"surprise"+".gif");
-                        //VBox v= new VBox();
-                        //v.setStyle("-fx-background-color: #E0E5B6;");
-                        
-                        //a.setText(nodesText.toString());
+               
                         controller.setQuestion(nodesText.toString());
                         StackPane root = new StackPane();
-                        //v.getChildren().add(root);
-                        //v.setAlignment(Pos.CENTER);
-                        //v.setFillWidth(true);
-                        //controller.vpaneCentral.getChildren().add(v);
+
                         controller.buttonYesVisible=false;
                         controller.buttonNoVisible=false;
 
 
-                        /*VBox v= new VBox();
-                        v.setStyle("-fx-background-color: #E0E5B6;");
-                        Label a= new Label();
-                        a.setTextAlignment(TextAlignment.CENTER);
-                         a.setFont(new Font("Bookman Old Style", 24)); 
-                        ButtonSi.setVisible(false);
-                        ButtonNo.setVisible(false);
-                        a.setText(nodesText.toString());
-                        StackPane root = new StackPane();
-                        root.getChildren().add(a);
-                        v.getChildren().add(root);
-                        v.setAlignment(Pos.CENTER);
-                        v.setFillWidth(true);
-                        borderPane.setLeft(v);
-                        return;*/
                    
                     } 
                     else {
-                            //updateQuestion();
+
                             this.tree = new TreeNodeDecision(node);
                             controller.setQuestion((String) node.data);
 

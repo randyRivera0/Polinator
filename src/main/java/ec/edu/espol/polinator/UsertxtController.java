@@ -60,26 +60,7 @@ public class UsertxtController implements Initializable {
         
     }    
 
-    /*
-    @FXML
-    private void Crear(ActionEvent event) {
-    if (preguntasFile != null && respuestasFile != null) {
-               String gameName = "Game " + (GameSet.getInstance().getGames().size() + 1);
-               GameSet.getInstance().addGame(preguntasFile, respuestasFile, gameName);
-
-               // Resetear archivos para la siguiente creación de juego
-               preguntasFile = null;
-               respuestasFile = null;
-               Abrir("primary_1");
-                 Button b = (Button) event.getSource();
-                 Stage s = (Stage) b.getScene().getWindow();
-                 s.close();
-               
-           } else {
-               showAlert("Porfavor sube los dos archivos completos.");
-           }
-    }
-    */
+   
 
     @FXML
     private void Preguntas(ActionEvent event) {
@@ -124,18 +105,10 @@ public class UsertxtController implements Initializable {
     @FXML
     private void Crear(ActionEvent event) {
         
-        System.out.println(GameSet.getInstance().getGames().size());
+
         
        if (preguntasFile != null && respuestasFile != null) {
-           
-        //round.setIsFinished(false);
-        //Round<String> round = newRound<>();
-        // Generar el nuevo nombre para los archivos
-       //String name="Game " + (GameSet.getInstance().getGames().size() + 1);
-       //round.setSubject(name);
-       //round.tree=new TreeNodeDecision(node);
-       System.out.println(preguntasFile.getAbsolutePath());
-       System.out.println(respuestasFile.getAbsolutePath());
+      
        
        Node<String> node= Utility.cargarArchivoPreguntasUser(preguntasFile.getAbsolutePath());
        Utility.cargarArchivoRespuestasUser(node , respuestasFile.getAbsolutePath());
@@ -145,7 +118,7 @@ public class UsertxtController implements Initializable {
         // Resetear archivos para la siguiente creación de juego
         preguntasFile = null;
         respuestasFile = null;
-        System.out.println(GameSet.getInstance().getGames().size());
+
 
     } else {
         showAlert("Por favor sube los dos archivos completos.");

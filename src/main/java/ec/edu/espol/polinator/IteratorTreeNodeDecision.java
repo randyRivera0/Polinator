@@ -30,9 +30,6 @@ public class IteratorTreeNodeDecision<E> implements IteratorTreeNode {
         }
 
 
-        // System.out.println(this.tree.root);
-        //return (this.tree.getRoot().getLeft()!=null || this.tree.getRoot().getRight()!=null);
-
     }
 
     @Override
